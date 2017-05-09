@@ -1,0 +1,8 @@
+[2017-05-06 12:17:32,471] INFO: CharDistribution_CosineSim_question1_x_question2_1D (1D): corr = 0.300369
+[2017-05-06 12:42:17,261] INFO: CharDistribution_CosineSim_question1_x_question1_1D (1D): corr = 0.006431
+[2017-05-06 13:06:29,796] INFO: CharDistribution_CosineSim_question2_x_question2_1D (1D): corr = 0.004940
+[2017-05-06 13:26:50,124] INFO: CharDistribution_CosineSim_question2_x_question1_1D (1D): corr = 0.300369
+[2017-05-06 13:37:21,325] INFO: CharDistribution_KL_question1_x_question2_1D (1D): corr = -0.327545
+[2017-05-06 13:44:34,604] INFO: CharDistribution_KL_question1_x_question1_1D (1D): corr = 0.000000
+[2017-05-06 13:52:15,020] INFO: CharDistribution_KL_question2_x_question2_1D (1D): corr = 0.000000
+[2017-05-06 13:59:35,465] INFO: CharDistribution_KL_question2_x_question1_1D (1D): corr = -0.326428
