@@ -1,0 +1,144 @@
+[2017-05-09 00:10:05,678] INFO: Run for basic...
+[2017-05-09 00:10:05,836] INFO: Combine   1/ 92 feat: CooccurrenceCount_Bigram_question1_x_question2_1D (1D) (corr = 0.3167326462322128)
+[2017-05-09 00:10:05,977] INFO: Combine   2/ 92 feat: CooccurrenceCount_Bigram_question2_x_question1_1D (1D) (corr = 0.3167326462322128)
+[2017-05-09 00:10:06,143] INFO: Combine   3/ 92 feat: CooccurrenceCount_Trigram_question1_x_question2_1D (1D) (corr = 0.2595419614146898)
+[2017-05-09 00:10:06,315] INFO: Combine   4/ 92 feat: CooccurrenceCount_Trigram_question2_x_question1_1D (1D) (corr = 0.2595419614146898)
+[2017-05-09 00:10:06,485] INFO: Combine   5/ 92 feat: CooccurrenceCount_Unigram_question1_x_question2_1D (1D) (corr = 0.16810638479823461)
+[2017-05-09 00:10:06,655] INFO: Combine   6/ 92 feat: CooccurrenceCount_Unigram_question2_x_question1_1D (1D) (corr = 0.16810638479823461)
+[2017-05-09 00:10:06,783] INFO: Combine   7/ 92 feat: CooccurrenceRatio_Bigram_question1_x_question2_1D (1D) (corr = 0.307879203828915)
+[2017-05-09 00:10:06,888] INFO: Combine   8/ 92 feat: CooccurrenceRatio_Bigram_question2_x_question1_1D (1D) (corr = 0.307879203828915)
+[2017-05-09 00:10:06,997] INFO: Combine   9/ 92 feat: CooccurrenceRatio_Trigram_question1_x_question2_1D (1D) (corr = 0.240180731937185)
+[2017-05-09 00:10:07,102] INFO: Combine  10/ 92 feat: CooccurrenceRatio_Trigram_question2_x_question1_1D (1D) (corr = 0.240180731937185)
+[2017-05-09 00:10:07,207] INFO: Combine  11/ 92 feat: CooccurrenceRatio_Unigram_question1_x_question2_1D (1D) (corr = 0.308206738640578)
+[2017-05-09 00:10:07,314] INFO: Combine  12/ 92 feat: CooccurrenceRatio_Unigram_question2_x_question1_1D (1D) (corr = 0.308206738640578)
+[2017-05-09 00:10:07,440] INFO: Drop: DigitCount_question1_1D (1D) (abs corr = 0.0039876580829624995, < threshold = 0.05)
+[2017-05-09 00:10:07,561] INFO: Drop: DigitCount_question2_1D (1D) (abs corr = 0.006396068634165991, < threshold = 0.05)
+[2017-05-09 00:10:07,655] INFO: Drop: DigitRatio_question1_1D (1D) (abs corr = 0.03569945388445178, < threshold = 0.05)
+[2017-05-09 00:10:07,751] INFO: Drop: DigitRatio_question2_1D (1D) (abs corr = 0.03190529053626012, < threshold = 0.05)
+[2017-05-09 00:10:07,859] INFO: Combine  13/ 92 feat: DocEntropy_question1_1D (1D) (corr = -0.14528322782820371)
+[2017-05-09 00:10:07,966] INFO: Combine  14/ 92 feat: DocEntropy_question2_1D (1D) (corr = -0.1461582928024153)
+[2017-05-09 00:10:08,117] INFO: Combine  15/ 92 feat: DocFreq_question1_1D (1D) (corr = 0.34077336595815455)
+[2017-05-09 00:10:08,263] INFO: Combine  16/ 92 feat: DocFreq_question2_1D (1D) (corr = 0.3350328345123778)
+[2017-05-09 00:10:08,373] INFO: Drop: DocId_question1_1D (1D) (abs corr = 0.002067737839914635, < threshold = 0.05)
+[2017-05-09 00:10:08,467] INFO: Drop: DocId_question2_1D (1D) (abs corr = 0.00011260269612234331, < threshold = 0.05)
+[2017-05-09 00:10:08,603] INFO: Combine  17/ 92 feat: DocLen_question1_1D (1D) (corr = -0.15580009668998154)
+[2017-05-09 00:10:08,776] INFO: Combine  18/ 92 feat: DocLen_question2_1D (1D) (corr = -0.15890005868988388)
+[2017-05-09 00:10:08,908] INFO: Combine  19/ 92 feat: LongestMatchRatio_question1_x_question2_1D (1D) (corr = 0.18719228322728237)
+[2017-05-09 00:10:09,020] INFO: Combine  20/ 92 feat: LongestMatchRatio_question2_x_question1_1D (1D) (corr = 0.18655753048849721)
+[2017-05-09 00:10:09,168] INFO: Combine  21/ 92 feat: LongestMatchSize_question1_x_question2_1D (1D) (corr = 0.2098310273643844)
+[2017-05-09 00:10:09,329] INFO: Combine  22/ 92 feat: LongestMatchSize_question2_x_question1_1D (1D) (corr = 0.2069800945999701)
+[2017-05-09 00:10:09,464] INFO: Combine  23/ 92 feat: MatchQueryCount_question1_x_question2_1D (1D) (corr = 0.07373998963134641)
+[2017-05-09 00:10:09,596] INFO: Combine  24/ 92 feat: MatchQueryCount_question2_x_question1_1D (1D) (corr = 0.07524464338081327)
+[2017-05-09 00:10:09,708] INFO: Combine  25/ 92 feat: MatchQueryRatio_question1_x_question2_1D (1D) (corr = 0.060143489773099815)
+[2017-05-09 00:10:09,818] INFO: Combine  26/ 92 feat: MatchQueryRatio_question2_x_question1_1D (1D) (corr = 0.06260504354114275)
+[2017-05-09 00:10:09,928] INFO: Combine  27/ 92 feat: StatCoocBM25_Bigram_Max_question1_x_question2_1D (1D) (corr = 0.3042302755074569)
+[2017-05-09 00:10:10,037] INFO: Combine  28/ 92 feat: StatCoocBM25_Bigram_Max_question2_x_question1_1D (1D) (corr = 0.30427398082086077)
+[2017-05-09 00:10:10,148] INFO: Combine  29/ 92 feat: StatCoocBM25_Bigram_Mean_question1_x_question2_1D (1D) (corr = 0.3186870361901789)
+[2017-05-09 00:10:10,295] INFO: Combine  30/ 92 feat: StatCoocBM25_Bigram_Mean_question2_x_question1_1D (1D) (corr = 0.3162681305304705)
+[2017-05-09 00:10:10,440] INFO: Combine  31/ 92 feat: StatCoocBM25_Bigram_Median_question1_x_question2_1D (1D) (corr = 0.19520267826472695)
+[2017-05-09 00:10:10,551] INFO: Combine  32/ 92 feat: StatCoocBM25_Bigram_Median_question2_x_question1_1D (1D) (corr = 0.19201685350750533)
+[2017-05-09 00:10:10,669] INFO: Combine  33/ 92 feat: StatCoocBM25_Bigram_Min_question1_x_question2_1D (1D) (corr = 0.07403003129624104)
+[2017-05-09 00:10:10,787] INFO: Combine  34/ 92 feat: StatCoocBM25_Bigram_Min_question2_x_question1_1D (1D) (corr = 0.07358472590444663)
+[2017-05-09 00:10:10,907] INFO: Combine  35/ 92 feat: StatCoocBM25_Bigram_Std_question1_x_question2_1D (1D) (corr = 0.3239535964202608)
+[2017-05-09 00:10:11,028] INFO: Combine  36/ 92 feat: StatCoocBM25_Bigram_Std_question2_x_question1_1D (1D) (corr = 0.3255364400992038)
+[2017-05-09 00:10:11,148] INFO: Combine  37/ 92 feat: StatCoocBM25_Trigram_Max_question1_x_question2_1D (1D) (corr = 0.2929756442105203)
+[2017-05-09 00:10:11,263] INFO: Combine  38/ 92 feat: StatCoocBM25_Trigram_Max_question2_x_question1_1D (1D) (corr = 0.2943644110089826)
+[2017-05-09 00:10:11,373] INFO: Combine  39/ 92 feat: StatCoocBM25_Trigram_Mean_question1_x_question2_1D (1D) (corr = 0.25373413310694976)
+[2017-05-09 00:10:11,486] INFO: Combine  40/ 92 feat: StatCoocBM25_Trigram_Mean_question2_x_question1_1D (1D) (corr = 0.25146345508070816)
+[2017-05-09 00:10:11,604] INFO: Combine  41/ 92 feat: StatCoocBM25_Trigram_Median_question1_x_question2_1D (1D) (corr = 0.14330120060963403)
+[2017-05-09 00:10:11,724] INFO: Combine  42/ 92 feat: StatCoocBM25_Trigram_Median_question2_x_question1_1D (1D) (corr = 0.13917994811895856)
+[2017-05-09 00:10:11,840] INFO: Combine  43/ 92 feat: StatCoocBM25_Trigram_Min_question1_x_question2_1D (1D) (corr = 0.06681157765135994)
+[2017-05-09 00:10:11,951] INFO: Combine  44/ 92 feat: StatCoocBM25_Trigram_Min_question2_x_question1_1D (1D) (corr = 0.06603315159970953)
+[2017-05-09 00:10:12,062] INFO: Combine  45/ 92 feat: StatCoocBM25_Trigram_Std_question1_x_question2_1D (1D) (corr = 0.29171068046360954)
+[2017-05-09 00:10:12,175] INFO: Combine  46/ 92 feat: StatCoocBM25_Trigram_Std_question2_x_question1_1D (1D) (corr = 0.29378317215023675)
+[2017-05-09 00:10:12,289] INFO: Combine  47/ 92 feat: StatCoocBM25_Unigram_Max_question1_x_question2_1D (1D) (corr = 0.15935091441351415)
+[2017-05-09 00:10:12,401] INFO: Combine  48/ 92 feat: StatCoocBM25_Unigram_Max_question2_x_question1_1D (1D) (corr = 0.1559710832768436)
+[2017-05-09 00:10:12,515] INFO: Combine  49/ 92 feat: StatCoocBM25_Unigram_Mean_question1_x_question2_1D (1D) (corr = 0.31824504043506535)
+[2017-05-09 00:10:12,627] INFO: Combine  50/ 92 feat: StatCoocBM25_Unigram_Mean_question2_x_question1_1D (1D) (corr = 0.31921593930688014)
+[2017-05-09 00:10:12,755] INFO: Combine  51/ 92 feat: StatCoocBM25_Unigram_Median_question1_x_question2_1D (1D) (corr = 0.26013539721505774)
+[2017-05-09 00:10:12,871] INFO: Combine  52/ 92 feat: StatCoocBM25_Unigram_Median_question2_x_question1_1D (1D) (corr = 0.26418195597858074)
+[2017-05-09 00:10:12,982] INFO: Combine  53/ 92 feat: StatCoocBM25_Unigram_Min_question1_x_question2_1D (1D) (corr = -0.1366363300803289)
+[2017-05-09 00:10:13,096] INFO: Combine  54/ 92 feat: StatCoocBM25_Unigram_Min_question2_x_question1_1D (1D) (corr = -0.13903729036217521)
+[2017-05-09 00:10:13,218] INFO: Combine  55/ 92 feat: StatCoocBM25_Unigram_Std_question1_x_question2_1D (1D) (corr = 0.2191249419095373)
+[2017-05-09 00:10:13,334] INFO: Combine  56/ 92 feat: StatCoocBM25_Unigram_Std_question2_x_question1_1D (1D) (corr = 0.2167734109978421)
+[2017-05-09 00:10:13,451] INFO: Combine  57/ 92 feat: StatCoocTFIDF_Bigram_Max_question1_x_question2_1D (1D) (corr = 0.2576654955961371)
+[2017-05-09 00:10:13,567] INFO: Combine  58/ 92 feat: StatCoocTFIDF_Bigram_Max_question2_x_question1_1D (1D) (corr = 0.25765177477238344)
+[2017-05-09 00:10:13,680] INFO: Combine  59/ 92 feat: StatCoocTFIDF_Bigram_Mean_question1_x_question2_1D (1D) (corr = 0.29923052236835584)
+[2017-05-09 00:10:13,791] INFO: Combine  60/ 92 feat: StatCoocTFIDF_Bigram_Mean_question2_x_question1_1D (1D) (corr = 0.29698774649107135)
+[2017-05-09 00:10:13,912] INFO: Combine  61/ 92 feat: StatCoocTFIDF_Bigram_Median_question1_x_question2_1D (1D) (corr = 0.18366572902971262)
+[2017-05-09 00:10:14,031] INFO: Combine  62/ 92 feat: StatCoocTFIDF_Bigram_Median_question2_x_question1_1D (1D) (corr = 0.180347387230539)
+[2017-05-09 00:10:14,143] INFO: Combine  63/ 92 feat: StatCoocTFIDF_Bigram_Min_question1_x_question2_1D (1D) (corr = 0.07750941973217418)
+[2017-05-09 00:10:14,260] INFO: Combine  64/ 92 feat: StatCoocTFIDF_Bigram_Min_question2_x_question1_1D (1D) (corr = 0.07645198348444178)
+[2017-05-09 00:10:14,371] INFO: Combine  65/ 92 feat: StatCoocTFIDF_Bigram_Std_question1_x_question2_1D (1D) (corr = 0.30393061716613246)
+[2017-05-09 00:10:14,483] INFO: Combine  66/ 92 feat: StatCoocTFIDF_Bigram_Std_question2_x_question1_1D (1D) (corr = 0.3058551108392929)
+[2017-05-09 00:10:14,599] INFO: Combine  67/ 92 feat: StatCoocTFIDF_Trigram_Max_question1_x_question2_1D (1D) (corr = 0.2732536134478056)
+[2017-05-09 00:10:14,720] INFO: Combine  68/ 92 feat: StatCoocTFIDF_Trigram_Max_question2_x_question1_1D (1D) (corr = 0.27386038507568944)
+[2017-05-09 00:10:14,835] INFO: Combine  69/ 92 feat: StatCoocTFIDF_Trigram_Mean_question1_x_question2_1D (1D) (corr = 0.24309452219142422)
+[2017-05-09 00:10:14,964] INFO: Combine  70/ 92 feat: StatCoocTFIDF_Trigram_Mean_question2_x_question1_1D (1D) (corr = 0.24012358587643454)
+[2017-05-09 00:10:15,092] INFO: Combine  71/ 92 feat: StatCoocTFIDF_Trigram_Median_question1_x_question2_1D (1D) (corr = 0.13438300367491943)
+[2017-05-09 00:10:15,210] INFO: Combine  72/ 92 feat: StatCoocTFIDF_Trigram_Median_question2_x_question1_1D (1D) (corr = 0.13012979683870138)
+[2017-05-09 00:10:15,332] INFO: Combine  73/ 92 feat: StatCoocTFIDF_Trigram_Min_question1_x_question2_1D (1D) (corr = 0.07133712407581665)
+[2017-05-09 00:10:15,447] INFO: Combine  74/ 92 feat: StatCoocTFIDF_Trigram_Min_question2_x_question1_1D (1D) (corr = 0.06965974828064357)
+[2017-05-09 00:10:15,564] INFO: Combine  75/ 92 feat: StatCoocTFIDF_Trigram_Std_question1_x_question2_1D (1D) (corr = 0.2864262017868224)
+[2017-05-09 00:10:15,680] INFO: Combine  76/ 92 feat: StatCoocTFIDF_Trigram_Std_question2_x_question1_1D (1D) (corr = 0.28809525488757237)
+[2017-05-09 00:10:15,801] INFO: Combine  77/ 92 feat: StatCoocTFIDF_Unigram_Max_question1_x_question2_1D (1D) (corr = 0.056086624534937714)
+[2017-05-09 00:10:15,921] INFO: Combine  78/ 92 feat: StatCoocTFIDF_Unigram_Max_question2_x_question1_1D (1D) (corr = 0.054466226247849255)
+[2017-05-09 00:10:16,041] INFO: Combine  79/ 92 feat: StatCoocTFIDF_Unigram_Mean_question1_x_question2_1D (1D) (corr = 0.24186709289828792)
+[2017-05-09 00:10:16,159] INFO: Combine  80/ 92 feat: StatCoocTFIDF_Unigram_Mean_question2_x_question1_1D (1D) (corr = 0.24856710356361014)
+[2017-05-09 00:10:16,274] INFO: Combine  81/ 92 feat: StatCoocTFIDF_Unigram_Median_question1_x_question2_1D (1D) (corr = 0.23008843724676334)
+[2017-05-09 00:10:16,388] INFO: Combine  82/ 92 feat: StatCoocTFIDF_Unigram_Median_question2_x_question1_1D (1D) (corr = 0.23987357420539965)
+[2017-05-09 00:10:16,510] INFO: Drop: StatCoocTFIDF_Unigram_Min_question1_x_question2_1D (1D) (abs corr = 0.04352112163584229, < threshold = 0.05)
+[2017-05-09 00:10:16,605] INFO: Drop: StatCoocTFIDF_Unigram_Min_question2_x_question1_1D (1D) (abs corr = 0.030766778107974742, < threshold = 0.05)
+[2017-05-09 00:10:16,706] INFO: Combine  83/ 92 feat: StatCoocTFIDF_Unigram_Std_question1_x_question2_1D (1D) (corr = 0.12489356643688815)
+[2017-05-09 00:10:16,827] INFO: Combine  84/ 92 feat: StatCoocTFIDF_Unigram_Std_question2_x_question1_1D (1D) (corr = 0.12764792513578524)
+[2017-05-09 00:11:02,635] INFO: Overall Shape: 404290 x 84
+[2017-05-09 00:11:02,668] INFO: Done combinning.
+[2017-05-09 00:11:33,399] INFO: Save to ../Feat/Combine/basic_linear.pkl
+[2017-05-09 00:16:55,170] INFO: tpe_transform took 0.005529 seconds
+[2017-05-09 00:16:55,172] INFO: TPE using 0 trials
+[2017-05-09 00:16:55,178] INFO: ==================================================
+[2017-05-09 00:16:55,179] INFO: Task
+[2017-05-09 00:16:55,179] INFO:       [Feat@basic_linear]_[Learner@reg_skl_knn]_[Id@1]
+[2017-05-09 00:16:55,179] INFO: Param
+[2017-05-09 00:16:55,179] INFO:       leaf_size: 20
+[2017-05-09 00:16:55,179] INFO:       metric: minkowski
+[2017-05-09 00:16:55,180] INFO:       n_neighbors: 12
+[2017-05-09 00:16:55,180] INFO:       normalize: False
+[2017-05-09 00:16:55,180] INFO:       weights: distance
+[2017-05-09 00:16:55,180] INFO: Result
+[2017-05-09 00:16:55,180] INFO:       Run      RMSE        Shape
+[2017-05-09 00:25:16,540] INFO:         1     0.79423    323431 x 84
+[2017-05-09 00:33:49,408] INFO:         2     0.79423    323431 x 84
+[2017-05-09 00:42:17,080] INFO:         3    0.794227    323432 x 84
+[2017-05-09 00:51:05,392] INFO:         4    0.794232    323433 x 84
+[2017-05-09 00:59:44,488] INFO:         5    0.794232    323433 x 84
+[2017-05-09 00:59:44,699] INFO: RMSE
+[2017-05-09 00:59:44,699] INFO:       Mean: 0.794231
+[2017-05-09 00:59:44,699] INFO:       Std: 0.000002
+[2017-05-09 00:59:44,700] INFO: Time
+[2017-05-09 00:59:44,700] INFO:       42 mins
+[2017-05-09 00:59:44,700] INFO: --------------------------------------------------
+[2017-05-09 04:08:19,657] INFO: tpe_transform took 0.022801 seconds
+[2017-05-09 04:08:19,663] INFO: TPE using 1/1 trials with best loss 0.794231
+[2017-05-09 04:08:19,716] INFO: ==================================================
+[2017-05-09 04:08:19,717] INFO: Task
+[2017-05-09 04:08:19,717] INFO:       [Feat@basic_linear]_[Learner@reg_skl_knn]_[Id@2]
+[2017-05-09 04:08:19,717] INFO: Param
+[2017-05-09 04:08:19,717] INFO:       leaf_size: 80
+[2017-05-09 04:08:19,717] INFO:       metric: minkowski
+[2017-05-09 04:08:19,717] INFO:       n_neighbors: 18
+[2017-05-09 04:08:19,718] INFO:       normalize: False
+[2017-05-09 04:08:19,718] INFO:       weights: uniform
+[2017-05-09 04:08:19,718] INFO: Result
+[2017-05-09 04:08:19,718] INFO:       Run      RMSE        Shape
+[2017-05-09 04:21:59,775] INFO:         1     0.79423    323431 x 84
+[2017-05-09 04:35:41,232] INFO:         2     0.79423    323431 x 84
+[2017-05-09 04:49:26,694] INFO:         3    0.794227    323432 x 84
+[2017-05-09 05:02:24,652] INFO:         4    0.794232    323433 x 84
+[2017-05-09 05:16:03,799] INFO:         5    0.794232    323433 x 84
+[2017-05-09 05:16:03,984] INFO: RMSE
+[2017-05-09 05:16:03,984] INFO:       Mean: 0.794231
+[2017-05-09 05:16:03,984] INFO:       Std: 0.000002
+[2017-05-09 05:16:03,985] INFO: Time
+[2017-05-09 05:16:03,985] INFO:       67 mins
+[2017-05-09 05:16:03,985] INFO: --------------------------------------------------
