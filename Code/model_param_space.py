@@ -100,6 +100,25 @@ param_space_clf_xgb_tree = {
     "seed": xgb_random_seed,
 }
 
+## classification with tree booster for test  Done
+param_space_clf_xgb_tree_test = {
+    "booster": "gbtree",
+    "objective": "multi:softprob",
+    "num_class": 2,
+    "base_score": config.BASE_SCORE,
+    "n_estimators" : 880,
+    "learning_rate" : 0.014,
+    "gamma": 0.0007375692431738125,
+    "reg_alpha" : 0.0024595063900801238,
+    "reg_lambda" : 0.0031003919409140915,
+    "min_child_weight": 96.14430369781684,
+    "max_depth": 7,
+    "subsample": 0.8500000000000001,
+    "colsample_bytree": 1,
+    "colsample_bylevel": 0.15000000000000002,
+    "nthread": xgb_nthread,
+    "seed": xgb_random_seed,
+}
 # -------------------------------------- Sklearn ---------------------------------------------
 ## lasso
 param_space_reg_skl_lasso = {
