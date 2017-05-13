@@ -11,25 +11,26 @@ import os
 #-----------------------------------------------------------------------
 # generate split (or you can use mine in ./Data/split/)
 #cmd = "python splitter.py"
-#os.system(cmd)
+cmd = "python simple_splitter.py"
+os.system(cmd)
 
 
 #-----------------------------------------------------------------------
 # prepare data
-#cmd = "python data_preparer.py"
-#os.system(cmd)
+cmd = "python data_preparer.py"
+os.system(cmd)
 
 
 #-----------------------------------------------------------------------
 # process/clean data
-#cmd = "python data_processor.py"
-#os.system(cmd)
+cmd = "python data_processor.py"
+os.system(cmd)
 
 
 #-----------------------------------------------------------------------
 # generate basic features
-#cmd = "python feature_basic.py &"
-#os.system(cmd)
+cmd = "python feature_basic.py &"
+os.system(cmd)
 
 
 #-----------------------------------------------------------------------
@@ -65,17 +66,17 @@ import os
 
 #-----------------------------------------------------------------------
 # generate intersect features
-#cmd = "python feature_intersect_count.py &"
-#os.system(cmd)
+cmd = "python feature_intersect_count.py &"
+os.system(cmd)
 
-#cmd = "python feature_intersect_position.py &"
-#os.system(cmd)
+cmd = "python feature_intersect_position.py &"
+os.system(cmd)
 
 
 #-----------------------------------------------------------------------
 # generate match features
-#cmd = "python feature_match.py &"
-#os.system(cmd)
+cmd = "python feature_match.py &"
+os.system(cmd)
 
 
 #-----------------------------------------------------------------------
@@ -86,10 +87,10 @@ import os
 
 #-----------------------------------------------------------------------
 # generate statistical cooccurrence (weighted) features
-#cmd = "python feature_stat_cooc_tfidf.py tf &"
-#os.system(cmd)
-# cmd = "python feature_stat_cooc_tfidf.py norm_tf &"
-# os.system(cmd)
+cmd = "python feature_stat_cooc_tfidf.py tf &"
+os.system(cmd)
+cmd = "python feature_stat_cooc_tfidf.py norm_tf &"
+os.system(cmd)
 
 cmd = "python feature_stat_cooc_tfidf.py tfidf &"
 os.system(cmd)
@@ -112,8 +113,8 @@ os.system(cmd)
 #-----------------------------------------------------------------------
 # generate wordnet similarity features
 # time consuming part ~20 hrs
-cmd = "python feature_wordnet_similarity.py &"
-os.system(cmd)
+#cmd = "python feature_wordnet_similarity.py &"
+#os.system(cmd)
 
 
 #-----------------------------------------------------------------------
@@ -139,8 +140,8 @@ os.system(cmd)
 #-----------------------------------------------------------------------
 # generate vector space features
 # most memory consuming part > 16GB
-cmd = "python feature_vector_space.py"
-os.system(cmd)
+#cmd = "python feature_vector_space.py"
+#os.system(cmd)
 
 #cmd = "python convert_pkl_lsa_to_csv_lsa.py"
 #os.system(cmd)

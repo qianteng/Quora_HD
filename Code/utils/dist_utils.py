@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-@author: Chenglong Chen <c.chenglong@gmail.com>
 @brief: utils for distance computation
 
 """
@@ -88,7 +87,6 @@ def _rmse(vec1, vec2):
     vdiff = vec1 - vec2
     rmse = np.sqrt(np.mean(vdiff**2))
     return rmse
-
 
 def _KL(dist1, dist2):
     "Kullback-Leibler Divergence"

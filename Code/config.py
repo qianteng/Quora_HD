@@ -17,7 +17,7 @@ from utils import os_utils
 TASK = "all"
 # # for testing data processing and feature generation
 #TASK = "sample"
-SAMPLE_SIZE = 1000
+#SAMPLE_SIZE = 1000
 
 # ------------------------ PATH ------------------------
 ROOT_DIR = ".."
@@ -51,8 +51,10 @@ WORD_REPLACER_DATA = "%s/dict/word_replacer.csv"%DATA_DIR
 
 # ------------------------ DATA ------------------------
 # provided data
-TRAIN_DATA = "%s/train.csv"%DATA_DIR
-TEST_DATA = "%s/test.csv"%DATA_DIR
+#TRAIN_DATA = "%s/train.csv"%DATA_DIR
+#TEST_DATA = "%s/test.csv"%DATA_DIR
+TRAIN_DATA = "%s/train.csv.short"%DATA_DIR
+TEST_DATA = "%s/test.csv.short"%DATA_DIR
 SAMPLE_DATA = "%s/sample_submission.csv"%DATA_DIR
 LABEL = "is_duplicate"                    # name of the label column
 
@@ -62,15 +64,20 @@ ALL_DATA_LEMMATIZED_STEMMED = "%s/all.lemmatized.stemmed.csv.pkl"%CLEAN_DATA_DIR
 INFO_DATA = "%s/info.csv.pkl"%CLEAN_DATA_DIR
 
 # size
-TRAIN_SIZE = 404290
+#TRAIN_SIZE = 404290
+TRAIN_SIZE = 1000
 if TASK == "sample":
     TRAIN_SIZE = SAMPLE_SIZE
-TEST_SIZE = 2345796
+#TEST_SIZE = 2345796
+TEST_SIZE = 5000
 TEST_RATIO = float(TEST_SIZE) / (TEST_SIZE + TRAIN_SIZE)
-VALID_SIZE_MAX = 283000 # 0.7 * TRAIN_SIZE
+#VALID_SIZE_MAX = 283000 # 0.7 * TRAIN_SIZE
+VALID_SIZE_MAX = 700
 
-TRAIN_MEAN = 0.369197      # mean of train label
-TRAIN_VAR = 0.232891
+#TRAIN_MEAN = 0.369197      # mean of train label
+#TRAIN_VAR = 0.232891
+TRAIN_MEAN = 0.38      # mean of train label
+TRAIN_VAR = 0.2358358
 
 TEST_MEAN = TRAIN_MEAN
 TEST_VAR = TRAIN_VAR

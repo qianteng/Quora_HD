@@ -41,24 +41,24 @@ NOT_COUNT_FEATS = ["Norm", "Ratio"]
 
 MANDATORY_FEATS = [
 
-"DocId_(search_term|product_title|product_color|product_brand)",
+#"DocId_(search_term|product_title|product_color|product_brand)",
 
 # including product_uid according to
 # https://www.kaggle.com/c/home-depot-product-search-relevance/forums/t/20288/trends-in-relevances-by-row-ids/115886#post115886
-"DocIdEcho_product_uid",
-"ProductUidDummy1_product_uid",
-"ProductUidDummy2_product_uid",
+#"DocIdEcho_product_uid",
+#"ProductUidDummy1_product_uid",
+#"ProductUidDummy2_product_uid",
 
-"IsInGoogleDict",
-"GroupRelevance_Size",
-"TSNE",
+#"IsInGoogleDict",
+#"GroupRelevance_Size",
+#"TSNE",
 ]
 
 
 COMMENT_OUT_FEATS = [
 
 #-------------- General --------------
-"search_term_alt",
+#"search_term_alt",
 
 "Bigram",
 "Trigram",
@@ -68,47 +68,47 @@ COMMENT_OUT_FEATS = [
 "Median",
 "Std",
 
-".+(Bigram|Trigram)_.+_product_(brand|color)",
+#".+(Bigram|Trigram)_.+_product_(brand|color)",
 
 
 #-------------- Basic --------------
-"DocLogFreq",
-"Digit",
-"Unique",
-"^DocIdOneHot",
-"^DocId",
+#"DocLogFreq",
+#"Digit",
+#"Unique",
+#"^DocIdOneHot",
+#"^DocId",
 
-"DocLen_product_(brand|color)",
-"DocLen_product_attribute_1D",
-"DocFreq_product_description_1D",
-"DocFreq_product_attribute_1D",
-"Digit(Count|Ratio)_product_(brand|color)",
-"Doc(Entropy|Len)_product_(brand|color)",
-"Unique(Count|Ratio)_.+_product_(brand|color)",
+#"DocLen_product_(brand|color)",
+#"DocLen_product_attribute_1D",
+#"DocFreq_product_description_1D",
+#"DocFreq_product_attribute_1D",
+#"Digit(Count|Ratio)_product_(brand|color)",
+#"Doc(Entropy|Len)_product_(brand|color)",
+#"Unique(Count|Ratio)_.+_product_(brand|color)",
 
 
 #-------------- Distance --------------
-"DiceDistance",
+#"DiceDistance",
 # "EditDistance",
-"Compression",
+#"Compression",
 
 
 #-------------- First and Last Ngram --------------
-"FirstIntersectNormPosition",
-"FirstIntersectPosition",
-"LastIntersectNormPosition",
-"LastIntersectPosition",
+#"FirstIntersectNormPosition",
+#"FirstIntersectPosition",
+#"LastIntersectNormPosition",
+#"LastIntersectPosition",
 
 
 #-------------- Group --------------
-"GroupRelevance_(Mean|Std|Max|Min|Median)",
-"Group_\d+",
-"GroupDistanceStat",
+#"GroupRelevance_(Mean|Std|Max|Min|Median)",
+#"Group_\d+",
+#"GroupDistanceStat",
 
 
 #-------------- Intersect Count & Position --------------
-"IntersectPosition_.+_(Std|Max|Min|Median)",
-"IntersectNormPosition_.+_(Std|Max|Min|Median)",
+#"IntersectPosition_.+_(Std|Max|Min|Median)",
+#"IntersectNormPosition_.+_(Std|Max|Min|Median)",
 
 
 #-------------- Match --------------
@@ -117,8 +117,8 @@ COMMENT_OUT_FEATS = [
 
 #-------------- StatCooc --------------
 # since product_name is of length 2, it makes no difference for various aggregation as there is only one item
-"StatCooc(TF|NormTF|TFIDF|NormTFIDF|BM25)_Bigram_(Std|Max|Min|Median)_search_term_product_name_x_product_title_product_name_1D",
-"StatCooc(TF|NormTF|TFIDF|NormTFIDF|BM25)_Bigram_(Std|Max|Min|Median)_product_title_product_name_x_search_term_product_name_1D",
+#"StatCooc(TF|NormTF|TFIDF|NormTFIDF|BM25)_Bigram_(Std|Max|Min|Median)_search_term_product_name_x_product_title_product_name_1D",
+#"StatCooc(TF|NormTF|TFIDF|NormTFIDF|BM25)_Bigram_(Std|Max|Min|Median)_product_title_product_name_x_search_term_product_name_1D",
 
 "NormTF",
 "NormTFIDF",
