@@ -89,13 +89,13 @@ os.system(cmd)
 # generate statistical cooccurrence (weighted) features
 cmd = "python feature_stat_cooc_tfidf.py tf &"
 os.system(cmd)
-cmd = "python feature_stat_cooc_tfidf.py norm_tf &"
-os.system(cmd)
+#cmd = "python feature_stat_cooc_tfidf.py norm_tf &"
+#os.system(cmd)
 
 cmd = "python feature_stat_cooc_tfidf.py tfidf &"
 os.system(cmd)
-cmd = "python feature_stat_cooc_tfidf.py norm_tfidf &"
-os.system(cmd)
+#cmd = "python feature_stat_cooc_tfidf.py norm_tfidf &"
+#os.system(cmd)
 
 cmd = "python feature_stat_cooc_tfidf.py bm25 &"
 os.system(cmd)
