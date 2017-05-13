@@ -8,9 +8,9 @@ import numpy as np
 import pandas as pd
 import ipdb
 from sklearn.model_selection import StratifiedKFold
-import matplotlib.pyplot as plt
-from matplotlib_venn import venn2
-plt.rcParams["figure.figsize"] = [5, 5]
+#import matplotlib.pyplot as plt
+#from matplotlib_venn import venn2
+#plt.rcParams["figure.figsize"] = [5, 5]
 
 import config
 from utils import pkl_utils
