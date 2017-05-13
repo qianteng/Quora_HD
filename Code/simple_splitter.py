@@ -36,8 +36,8 @@ class SimpleSplitter:
         for trainInd, validInd in rs:
             #print('1 in train {:.3f}'.format(np.sum(self.dfTrain.loc[trainInd]['is_duplicate'] == 1) / float(len(trainInd))))
             #print('1 in valid {:.3f}'.format(np.sum(self.dfTrain.loc[validInd]['is_duplicate'] == 1) / float(len(validInd))))
-            target_ratio = 0.175
-            validInd = self.under_sample(validInd, target_ratio)
+            #target_ratio = 0.175
+            #validInd = self.under_sample(validInd, target_ratio)
             #print('1 in valid {:.3f}'.format(np.sum(self.dfTrain.loc[validInd]['is_duplicate'] == 1) / float(len(validInd))))
             self.splits[run] = trainInd, validInd
             run += 1
