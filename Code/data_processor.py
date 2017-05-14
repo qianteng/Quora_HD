@@ -15,6 +15,7 @@ import pandas as pd
 import multiprocessing
 from bs4 import BeautifulSoup
 from collections import Counter
+import ipdb
 
 import config
 from utils import ngram_utils, pkl_utils, logging_utils, time_utils
@@ -47,6 +48,7 @@ class LowerCaseConverter(BaseReplacer):
 
 class LowerUpperCaseSplitter(BaseReplacer):
     """
+    Not used in Quora project
     homeBASICS Traditional Real Wood -> homeBASICS Traditional Real Wood
 
     hidden from viewDurable rich finishLimited lifetime warrantyEncapsulated panels ->
@@ -54,14 +56,6 @@ class LowerUpperCaseSplitter(BaseReplacer):
 
     Dickies quality has been built into every product.Excellent visibilityDurable ->
     Dickies quality has been built into every product Excellent visibility Durable
-
-    BAD CASE:
-    shadeMature height: 36 in. - 48 in.Mature width
-    minutesCovers up to 120 sq. ft.Cleans up
-    PUT one UnitConverter before LowerUpperCaseSplitter
-
-    Reference:
-    https://www.kaggle.com/c/home-depot-product-search-relevance/forums/t/18472/typos-in-the-product-descriptions
     """
     def __init__(self):
         self.pattern_replace_pair_list = [
@@ -91,6 +85,7 @@ class WordReplacer(BaseReplacer):
 ## deal with letters
 class LetterLetterSplitter(BaseReplacer):
     """
+    Not used in Quora project
     For letter and letter
     /:
     Cleaner/Conditioner -> Cleaner Conditioner
@@ -350,8 +345,8 @@ def main():
         # See LowerUpperCaseSplitter and UnitConverter for why we put UnitConverter here
         UnitConverter(),
         #LowerUpperCaseSplitter(), 
-        #WordReplacer(replace_fname=config.WORD_REPLACER_DATA), 
-        LetterLetterSplitter(),
+        WordReplacer(replace_fname=config.WORD_REPLACER_DATA), 
+        #LetterLetterSplitter(),
         DigitLetterSplitter(), 
         DigitCommaDigitMerger(), 
         NumberDigitMapper(),
@@ -367,6 +362,7 @@ def main():
 
     ## simple test
     text = "1/2 inch rubber lep tips Bullet07"
+    #ipdb.set_trace()
     print("Original:")
     print(text)
     list_processor = ListProcessor(processors)
@@ -382,11 +378,12 @@ def main():
 
     ## clean using GoogleQuerySpellingChecker
     # MUST BE IN FRONT OF ALL THE PROCESSING
-    if config.GOOGLE_CORRECTING_QUERY:
-        logger.info("Run GoogleQuerySpellingChecker")
-        checker = GoogleQuerySpellingChecker()
-        dfAll["question1"] = dfAll["question1"].apply(checker.correct)
-        #dfAll["question2"] = dfAll["question2"].apply(checker.correct)
+    # Not used in Quora project
+    #if config.GOOGLE_CORRECTING_QUERY:
+    #    logger.info("Run GoogleQuerySpellingChecker")
+    #    checker = GoogleQuerySpellingChecker()
+    #    dfAll["question1"] = dfAll["question1"].apply(checker.correct)
+    #    dfAll["question2"] = dfAll["question2"].apply(checker.correct)
 
 
     ## clean uisng a list of processors

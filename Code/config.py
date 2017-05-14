@@ -53,8 +53,10 @@ WORD_REPLACER_DATA = "%s/dict/word_replacer.csv"%DATA_DIR
 # provided data
 #TRAIN_DATA = "%s/train.csv"%DATA_DIR
 #TEST_DATA = "%s/test.csv"%DATA_DIR
+
 TRAIN_DATA = "%s/train.csv.short"%DATA_DIR
 TEST_DATA = "%s/test.csv.short"%DATA_DIR
+
 SAMPLE_DATA = "%s/sample_submission.csv"%DATA_DIR
 LABEL = "is_duplicate"                    # name of the label column
 
@@ -65,17 +67,25 @@ INFO_DATA = "%s/info.csv.pkl"%CLEAN_DATA_DIR
 
 # size
 #TRAIN_SIZE = 404290
+
 TRAIN_SIZE = 1000
+
 if TASK == "sample":
     TRAIN_SIZE = SAMPLE_SIZE
+    
 #TEST_SIZE = 2345796
+
 TEST_SIZE = 5000
+
 TEST_RATIO = float(TEST_SIZE) / (TEST_SIZE + TRAIN_SIZE)
+
 #VALID_SIZE_MAX = 283000 # 0.7 * TRAIN_SIZE
+
 VALID_SIZE_MAX = 700
 
 #TRAIN_MEAN = 0.369197      # mean of train label
 #TRAIN_VAR = 0.232891
+
 TRAIN_MEAN = 0.38      # mean of train label
 TRAIN_VAR = 0.2358358
 
