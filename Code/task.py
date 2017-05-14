@@ -333,7 +333,7 @@ class Task:
         # submission
         fname = "%s/test.pred.%s.[Mean%.6f]_[Std%.6f].csv"%(
             config.SUBM_DIR, self.__str__(), self.loss_cv_mean, self.loss_cv_std)
-        pd.DataFrame.from_items([("test_id", id_test), ("is_duplicate", y_pred)]).to_csv(fname, index=False)
+        pd.DataFrame.from_items([("test_id", id_test), ("is_duplicate", y_proba[:, 1])]).to_csv(fname, index=False)
 
         # plot importance
         if self.plot_importance:

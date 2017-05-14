@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-@brief: config for Homedepot project
+@brief: config for Quora project
 
 """
 
@@ -64,20 +64,20 @@ ALL_DATA_LEMMATIZED_STEMMED = "%s/all.lemmatized.stemmed.csv.pkl"%CLEAN_DATA_DIR
 INFO_DATA = "%s/info.csv.pkl"%CLEAN_DATA_DIR
 
 # size
-TRAIN_SIZE = 404290
-#TRAIN_SIZE = 1000
+#TRAIN_SIZE = 404290
+TRAIN_SIZE = 1000
 if TASK == "sample":
     TRAIN_SIZE = SAMPLE_SIZE
-TEST_SIZE = 2345796
-#TEST_SIZE = 5000
+#TEST_SIZE = 2345796
+TEST_SIZE = 5000
 TEST_RATIO = float(TEST_SIZE) / (TEST_SIZE + TRAIN_SIZE)
-VALID_SIZE_MAX = 283000 # 0.7 * TRAIN_SIZE
-#VALID_SIZE_MAX = 700
+#VALID_SIZE_MAX = 283000 # 0.7 * TRAIN_SIZE
+VALID_SIZE_MAX = 700
 
-TRAIN_MEAN = 0.369197      # mean of train label
-TRAIN_VAR = 0.232891
-#TRAIN_MEAN = 0.38      # mean of train label
-#TRAIN_VAR = 0.2358358
+#TRAIN_MEAN = 0.369197      # mean of train label
+#TRAIN_VAR = 0.232891
+TRAIN_MEAN = 0.38      # mean of train label
+TRAIN_VAR = 0.2358358
 
 TEST_MEAN = 0.175
 TEST_VAR = TRAIN_VAR
@@ -148,7 +148,7 @@ STOP_WORDS = set(ENGLISH_STOP_WORDS)
 # ------------------------ OTHER ------------------------
 RANDOM_SEED = 2017
 PLATFORM = platform.system()
-NUM_CORES = 4 if PLATFORM == "Darwin" else 14
+NUM_CORES = 4 if PLATFORM == "Darwin" else 16
 
 DATA_PROCESSOR_N_JOBS = 4 if PLATFORM == "Darwin" else 6
 AUTO_SPELLING_CHECKER_N_JOBS = 4 if PLATFORM == "Darwin" else 8
