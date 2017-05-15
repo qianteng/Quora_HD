@@ -13,7 +13,7 @@ import regex
 import numpy as np
 import pandas as pd
 import multiprocessing
-from bs4 import BeautifulSoup
+#from bs4 import BeautifulSoup
 from collections import Counter
 import ipdb
 
