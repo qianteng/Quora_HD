@@ -12,7 +12,7 @@
 import os
 import re
 import string
-
+import ipdb
 import scipy
 import numpy as np
 import pandas as pd
@@ -101,6 +101,7 @@ class VectorSpace:
 
 # ------------------------ LSA -------------------------------
 class LSA_Word_Ngram(VectorSpace):
+    """Single aggregation features"""
     def __init__(self, obs_corpus, place_holder, ngram=3, svd_dim=100, svd_n_iter=5):
         self.obs_corpus = obs_corpus
         self.ngram = ngram
@@ -120,6 +121,7 @@ class LSA_Word_Ngram(VectorSpace):
 
 
 class LSA_Char_Ngram(VectorSpace):
+    """Single aggregation features"""
     def __init__(self, obs_corpus, place_holder, ngram=5, svd_dim=100, svd_n_iter=5):
         self.obs_corpus = obs_corpus
         self.ngram = ngram
@@ -465,13 +467,12 @@ def run_lsa_ngram():
     dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)
 
     generators = [LSA_Word_Ngram, LSA_Char_Ngram]
-    ngrams_list = [[1,2,3], [2,3,4,5]]
-    ngrams_list = [[3], [4]]
+    ngrams_list = [[1, 2, 3, 4, 5], [2, 3, 4, 5]]
     obs_fields = ['question1', 'question2']
     for generator,ngrams in zip(generators, ngrams_list):
         for ngram in ngrams:
             param_list = [ngram, config.SVD_DIM, config.SVD_N_ITER]
-            sf = StandaloneFeatureWrapper(generator, dfAll, obs_fields, param_list, config.FEAT_DIR, logger)
+            sf = StandaloneFeatureWrapper(generator, dfAll, obs_fields, param_list, config.FEAT_DIR, logger, force_corr=True)
             sf.go()
 
 
@@ -612,10 +613,10 @@ def run_char_dist_sim():
 
 if __name__ == "__main__":
 
-    run_char_dist_sim()
-    run_tfidf_ngram_cosinesim()
-    run_lsa_ngram_cosinesim()
     run_lsa_ngram()
-    run_lsa_ngram_pair()
-    run_lsa_ngram_cooc()
-    run_tsne_lsa_ngram()
+    #run_lsa_ngram_cooc()
+    #run_lsa_ngram_pair()
+    #run_tsne_lsa_ngram()
+    #run_lsa_ngram_cosinesim()
+    #run_tfidf_ngram_cosinesim()
+    #run_char_dist_sim()

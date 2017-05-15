@@ -10,7 +10,7 @@
 import sys
 import string
 from collections import defaultdict
-
+import ipdb
 import numpy as np
 import pandas as pd
 
@@ -285,7 +285,6 @@ def main(which):
         generators.append( StatCoocNormTFIDF_Ngram )
     elif which == "bm25":
         generators.append( StatCoocBM25_Ngram )
-    print("TFIDF Mode: {}".format(which))
 
     obs_fields_list = []
     target_fields_list = []
@@ -295,7 +294,7 @@ def main(which):
     ## question2 in question1
     obs_fields_list.append( ['question2'] )
     target_fields_list.append( ['question1'] )
-    ngrams = [1,2,3,12,123][:3]
+    ngrams = [1, 2, 3, 4, 5, 12, 123]
     aggregation_mode = ["mean", "std", "max", "min", "median"]
     for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
         for generator in generators:

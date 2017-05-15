@@ -110,7 +110,7 @@ def main():
     ## question2 in question1
     obs_fields_list.append( ['question2'] )
     target_fields_list.append( ['question1'] )
-    ngrams = [1,2,3,12,123][:3]
+    ngrams = [1, 2, 3, 4, 5, 12, 123]
     aggregation_mode = ["mean", "std", "max", "min", "median"]
     for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
         for generator in generators:

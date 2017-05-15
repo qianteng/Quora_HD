@@ -21,6 +21,8 @@ def _get_logger(logdir, logname, loglevel=logging.INFO):
     handler.setFormatter(formatter)
 
     logger = logging.getLogger("")
+    for hdlr in logger.handlers[:]:
+        logger.removeHandler(hdlr)        # remove all old handlers
     logger.addHandler(handler)
     logger.setLevel(loglevel)
     return logger

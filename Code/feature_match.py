@@ -64,7 +64,6 @@ class LongestMatchSize(BaseEstimator):
     def transform_one(self, obs, target, id):
         return dist_utils._longest_match_size(obs, target)
 
-
 class LongestMatchRatio(BaseEstimator):
     def __init__(self, obs_corpus, target_corpus, aggregation_mode=""):
         super().__init__(obs_corpus, target_corpus, aggregation_mode)
@@ -74,81 +73,6 @@ class LongestMatchRatio(BaseEstimator):
 
     def transform_one(self, obs, target, id):
         return dist_utils._longest_match_ratio(obs, target)
-
-
-# --------------------------- Attribute based features -------------------------
-class MatchAttrCount(BaseEstimator):
-    def __init__(self, obs_corpus, target_corpus, aggregation_mode=""):
-        super().__init__(obs_corpus, target_corpus, aggregation_mode)
-        
-    def __name__(self):
-        return "MatchAttrCount"
-
-    def _str_whole_word(self, str1, str2, i_):
-        cnt = 0
-        if len(str1) > 0 and len(str2) > 0:
-            try:
-                while i_ < len(str2):
-                    i_ = str2.find(str1, i_)
-                    if i_ == -1:
-                        return cnt
-                    else:
-                        cnt += 1
-                        i_ += len(str1)
-            except:
-                pass
-        return cnt
-
-    def transform_one(self, obs, target, id):
-        cnt = 0
-        for o in obs.split(" "):
-            for t in target:
-                if not t[0].startswith("bullet"):
-                    if self._str_whole_word(obs, t[0], 0):
-                        cnt += 1
-        return cnt
-
-
-class MatchAttrRatio(MatchQueryCount):
-    def __init__(self, obs_corpus, target_corpus, aggregation_mode=""):
-        super().__init__(obs_corpus, target_corpus, aggregation_mode)
-        
-    def __name__(self):
-        return "MatchAttrRatio"
-
-    def transform_one(self, obs, target, id):
-        lo = len(obs.split(" "))
-        lt = len([t[0] for t in target if not t[0].startswith("bullet")])
-        return np_utils._try_divide(super().transform_one(obs, target, id), lo*lt)
-
-
-class IsIndoorOutdoorMatch(BaseEstimator):
-    def __init__(self, obs_corpus, target_corpus, aggregation_mode=""):
-        super().__init__(obs_corpus, target_corpus, aggregation_mode)
-        
-    def __name__(self):
-        return "IsIndoorOutdoorMatch"
-
-    def transform_one(self, obs, target, id):
-        os = []
-        if obs.find("indoor") != -1:
-            os.append("indoor")
-        if obs.find("outdoor") != -1:
-            os.append("outdoor")
-
-        cnt = 0
-        for t in target:
-            if t[0].find("indoor outdoor") != -1:
-                cnt = 1
-                ts = t[1].split(" ")
-                for i in ts:
-                    if i in os:
-                        return 1
-        if cnt == 0:
-            return 0
-        else:
-            return -1
-
 
 # ---------------------------- Main --------------------------------------
 def main():

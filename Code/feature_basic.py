@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-@author: Chenglong Chen <c.chenglong@gmail.com>
 @brief: basic features
 
 """
@@ -15,7 +14,7 @@ from sklearn.preprocessing import LabelBinarizer
 import config
 from utils import ngram_utils, nlp_utils, np_utils
 from utils import time_utils, logging_utils, pkl_utils
-from feature_base import BaseEstimator, StandaloneFeatureWrapper
+from feature_base import BaseEstimator, StandaloneFeatureWrapper, PairwiseFeatureWrapper
 
 
 # tune the token pattern to get a better correlation with y_train
@@ -40,7 +39,7 @@ class DocId(BaseEstimator):
 
 
 class DocIdEcho(BaseEstimator):
-    """resturn 'id' in the DataFrame"""
+    """Return 'id' in the DataFrame"""
     def __init__(self, obs_corpus, target_corpus, aggregation_mode=""):
         super().__init__(obs_corpus, target_corpus, aggregation_mode)
 
@@ -62,6 +61,27 @@ class DocIdOneHot(BaseEstimator):
         lb = LabelBinarizer(sparse_output=True)
         return lb.fit_transform(self.obs_corpus)
 
+class MaxValue(BaseEstimator):
+    """Return maximum of the obs and target""" 
+    def __init__(self, obs_corpus, target_corpus, aggregation_mode=""):
+        super().__init__(obs_corpus, target_corpus, aggregation_mode)
+
+    def __name__(self):
+        return "MaxValue"
+    
+    def transform_one(self, obs, target, id):
+        return max(obs, target)
+
+class DiffValue(BaseEstimator):
+    """Return abs difference of the obs and target""" 
+    def __init__(self, obs_corpus, target_corpus, aggregation_mode=""):
+        super().__init__(obs_corpus, target_corpus, aggregation_mode)
+
+    def __name__(self):
+        return "DiffValue"
+    
+    def transform_one(self, obs, target, id):
+        return abs(obs - target)
 
 """
 product_uid     int(obs > 164038 and obs <= 206650)
@@ -74,7 +94,10 @@ In specific,
 50K points of 147406 in public, and the rest 100K points in private.
 """
 class ProductUidDummy1(BaseEstimator):
-    """For product_uid"""
+    """
+    Not used in Quora project
+    For product_uid
+    """
     def __init__(self, obs_corpus, target_corpus, aggregation_mode=""):
         super().__init__(obs_corpus, target_corpus, aggregation_mode)
 
@@ -86,7 +109,10 @@ class ProductUidDummy1(BaseEstimator):
 
 
 class ProductUidDummy2(BaseEstimator):
-    """For product_uid"""
+    """
+    Not used in Quora project
+    For product_uid
+    """
     def __init__(self, obs_corpus, target_corpus, aggregation_mode=""):
         super().__init__(obs_corpus, target_corpus, aggregation_mode)
 
@@ -98,7 +124,10 @@ class ProductUidDummy2(BaseEstimator):
 
 
 class ProductUidDummy3(BaseEstimator):
-    """For product_uid"""
+    """
+    Not used in Quora project
+    For product_uid
+    """
     def __init__(self, obs_corpus, target_corpus, aggregation_mode=""):
         super().__init__(obs_corpus, target_corpus, aggregation_mode)
 
@@ -121,6 +150,18 @@ class DocLen(BaseEstimator):
         obs_tokens = nlp_utils._tokenize(obs, token_pattern)
         return len(obs_tokens)
 
+class DocLenRatio(BaseEstimator):
+    """Ratio of lengths of document"""
+    def __init__(self, obs_corpus, target_corpus, aggregation_mode=""):
+        super().__init__(obs_corpus, target_corpus, aggregation_mode)
+
+    def __name__(self):
+        return "DocLenRatio"
+
+    def transform_one(self, obs, target, id):
+        obs_tokens = nlp_utils._tokenize(obs, token_pattern)
+        target_tokens = nlp_utils._tokenize(target, token_pattern)
+        return abs(np_utils._try_divide(len(obs_tokens), len(target_tokens)) - 1)
 
 class DocFreq(BaseEstimator):
     """Frequency of the document in the corpus"""
@@ -211,17 +252,45 @@ def main():
     dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)
 
     ## basic
-    generators = [DocId, DocLen, DocFreq, DocEntropy, DigitCount, DigitRatio]
+    generators = [DocId, DocIdOneHot, DocLen, DocFreq, DocEntropy, DigitCount, DigitRatio]
     obs_fields = ["question1", "question2"] 
     for generator in generators:
         param_list = []
         sf = StandaloneFeatureWrapper(generator, dfAll, obs_fields, param_list, config.FEAT_DIR, logger)
         sf.go()
 
+    ## id
+    generators = [DocIdEcho]
+    obs_fields = ["id"] 
+    for generator in generators:
+        param_list = []
+        sf = StandaloneFeatureWrapper(generator, dfAll, obs_fields, param_list, config.FEAT_DIR, logger)
+        sf.go()
+
+    ## qid
+    generators = [MaxValue, DiffValue]
+    obs_fields_list = [['qid1']]
+    target_fields_list = [['qid2']]
+    for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
+        for generator in generators:
+                param_list = []
+                pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger)
+                pf.go()
+
+    ## DocLenRatio
+    generators = [DocLenRatio]
+    obs_fields_list = [['question1']]
+    target_fields_list = [['question2']]
+    for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
+        for generator in generators:
+                param_list = []
+                pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger)
+                pf.go()
+                
     ## unique count
     generators = [UniqueCount_Ngram, UniqueRatio_Ngram]
     obs_fields = ["question1", "question2"]
-    ngrams = [1,2,3]
+    ngrams = [1, 2, 3, 4, 5, 12, 123]
     for generator in generators:
         for ngram in ngrams:
             param_list = [ngram]

@@ -66,11 +66,28 @@ def _fourgrams(words, join_string):
     L = len(words)
     if L > 3:
         lst = []
-        for i in xrange(L-3):
+        for i in range(L-3):
             lst.append( join_string.join([words[i], words[i+1], words[i+2], words[i+3]]) )
     else:
         # set it as trigram
         lst = _trigrams(words, join_string)
+    return lst
+
+def _fivegrams(words, join_string):
+    """
+        Input: a list of words, e.g., ["I", "am", "Denny", "boy", "ha"]
+        Output: a list of trigram, e.g., ["I_am_Denny_boy_ha"]
+        I use _ as join_string for this example.
+    """
+    assert type(words) == list
+    L = len(words)
+    if L > 4:
+        lst = []
+        for i in range(L-4):
+            lst.append( join_string.join([words[i], words[i+1], words[i+2], words[i+3], words[i+4]]) )
+    else:
+        # set it as fourgram
+        lst = _fourgrams(words, join_string)
     return lst
 
 
@@ -107,9 +124,9 @@ def _triterms(words, join_string):
     L = len(words)
     if L > 2:
         lst = []
-        for i in xrange(L-2):
-            for j in xrange(i+1,L-1):
-                for k in xrange(j+1,L):
+        for i in range(L-2):
+            for j in range(i+1,L-1):
+                for k in range(j+1,L):
                     lst.append( join_string.join([words[i], words[j], words[k]]) )
     else:
         # set it as biterm
@@ -127,10 +144,10 @@ def _fourterms(words, join_string):
     L = len(words)
     if L > 3:
         lst = []
-        for i in xrange(L-3):
-            for j in xrange(i+1,L-2):
-                for k in xrange(j+1,L-1):
-                    for l in xrange(k+1,L):
+        for i in range(L-3):
+            for j in range(i+1,L-2):
+                for k in range(j+1,L-1):
+                    for l in range(k+1,L):
                         lst.append( join_string.join([words[i], words[j], words[k], words[l]]) )
     else:
         # set it as triterm
@@ -159,6 +176,8 @@ def _ngrams(words, ngram, join_string=" "):
         return _trigrams(words, join_string)
     elif ngram == 4:
         return _fourgrams(words, join_string)
+    elif ngram == 5:
+        return _fivegrams(words, join_string)
     elif ngram == 12:
         unigram = _unigrams(words)
         bigram = [x for x in _bigrams(words, join_string) if len(x.split(join_string)) == 2]
@@ -175,7 +194,6 @@ _nterm_str_map = {
     2: "Biterm",
     3: "Triterm",
     4: "Fourterm",
-    5: "Fiveterm",
 }
 
 
@@ -195,11 +213,11 @@ if __name__ == "__main__":
 
     text = "I am Denny boy ha"
     words = text.split(" ")
-
     assert _ngrams(words, 1) == ["I", "am", "Denny", "boy", "ha"]
     assert _ngrams(words, 2) == ["I am", "am Denny", "Denny boy", "boy ha"]
     assert _ngrams(words, 3) == ["I am Denny", "am Denny boy", "Denny boy ha"]
     assert _ngrams(words, 4) == ["I am Denny boy", "am Denny boy ha"]
+    assert _ngrams(words, 5) == ["I am Denny boy ha"]
 
     assert _nterms(words, 1) == ["I", "am", "Denny", "boy", "ha"]
     assert _nterms(words, 2) == ["I am", "I Denny", "I boy", "I ha", "am Denny", "am boy", "am ha", "Denny boy", "Denny ha", "boy ha"]

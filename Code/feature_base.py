@@ -6,8 +6,9 @@
 
 import os
 import sys
-
+import ipdb
 import numpy as np
+import logging
 
 import config
 from config import TRAIN_SIZE
@@ -118,6 +119,7 @@ class StandaloneFeatureWrapper:
             obs_corpus = self.dfAll[obs_field].values
             ext = self.generator(obs_corpus, None, *self.param_list)
             x = ext.transform()
+            
             if isinstance(ext.__name__(), list):
                 for i,feat_name in enumerate(ext.__name__()):
                     dim = 1
@@ -136,7 +138,6 @@ class StandaloneFeatureWrapper:
                     for j in range(dim):
                         corr = np_utils._corr(x[:TRAIN_SIZE,j], y_train)
                         self.logger.info("%s (%d/%dD): corr = %.6f"%(fname, j+1, dim, corr))
-
 
 # Wrapper for generating pairwise feature, e.g., 
 # intersect count of words between question1 and question2
