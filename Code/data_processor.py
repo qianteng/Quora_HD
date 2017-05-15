@@ -19,7 +19,7 @@ import ipdb
 
 import config
 from utils import ngram_utils, pkl_utils, logging_utils, time_utils
-from spelling_checker import GoogleQuerySpellingChecker, AutoSpellingChecker
+#from spelling_checker import GoogleQuerySpellingChecker, AutoSpellingChecker
 
 
 #--------------------------- Processor ---------------------------
