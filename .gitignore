@@ -1,4 +1,5 @@
 Data/
+Code/conf/
 Result/
 .DS_Store
 *~
@@ -7,3 +8,4 @@ _*_
 *.ipynb*
 *.pkl
 *.csv
+*.log
