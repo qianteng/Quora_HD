@@ -51,12 +51,9 @@ WORD_REPLACER_DATA = "%s/dict/word_replacer.csv"%DATA_DIR
 
 # ------------------------ DATA ------------------------
 # provided data
-#TRAIN_DATA = "%s/train.csv"%DATA_DIR
-#TEST_DATA = "%s/test.csv"%DATA_DIR
 
-TRAIN_DATA = "%s/train.csv.short"%DATA_DIR
-TEST_DATA = "%s/test.csv.short"%DATA_DIR
-
+TRAIN_DATA = "%s/train.csv"%DATA_DIR
+TEST_DATA = "%s/test.csv"%DATA_DIR
 SAMPLE_DATA = "%s/sample_submission.csv"%DATA_DIR
 LABEL = "is_duplicate"                    # name of the label column
 
@@ -66,47 +63,41 @@ ALL_DATA_LEMMATIZED_STEMMED = "%s/all.lemmatized.stemmed.csv.pkl"%CLEAN_DATA_DIR
 INFO_DATA = "%s/info.csv.pkl"%CLEAN_DATA_DIR
 
 # size
-#TRAIN_SIZE = 404290
-
-TRAIN_SIZE = 1000
-
+TRAIN_SIZE = 404290
 if TASK == "sample":
     TRAIN_SIZE = SAMPLE_SIZE
-    
-#TEST_SIZE = 2345796
-
-TEST_SIZE = 5000
-
+TEST_SIZE = 2345796
 TEST_RATIO = float(TEST_SIZE) / (TEST_SIZE + TRAIN_SIZE)
-
-#VALID_SIZE_MAX = 283000 # 0.7 * TRAIN_SIZE
-
-VALID_SIZE_MAX = 700
-
-#TRAIN_MEAN = 0.369197      # mean of train label
-#TRAIN_VAR = 0.232891
-
-TRAIN_MEAN = 0.38      # mean of train label
-TRAIN_VAR = 0.2358358
-
+VALID_SIZE_MAX = 283000 # 0.7 * TRAIN_SIZE
+TRAIN_MEAN = 0.369197      # mean of train label
+TRAIN_VAR = 0.232891
 TEST_MEAN = 0.175
 TEST_VAR = TRAIN_VAR
 
-#MEAN_STD_DICT = {
-#    1.00: 0.000, # Common: [1, 1, 1]
-#    1.25: 0.433, # Rare: [1,1,1,2]
-#    1.33: 0.471, # Common: [1, 1, 2]
-#    1.50: 0.866, # Rare: [1, 1, 1, 3]
-#    1.67: 0.471, # Common: [1, 2, 2]
-#    1.75: 0.829, # Rare: [1, 1, 2, 3]
-#    2.00: 0.000, # Common: [2, 2, 2], [1, 2, 3]
-#    2.25: 0.829, # Rare: [1,2,3,3]
-#    2.33: 0.471, # Common: [2, 2, 3]
-#    2.50: 0.500, # Rare: [2,2,3,3]
-#    2.67: 0.471, # Common: [2, 3, 3]
-#    2.75: 0.433, # Rare: [2,3,3,3]
-#    3.00: 0.000, # Common: [3, 3, 3]
-#}
+# ------------------------SAMPLE DATA ------------------------
+# provided data
+"""
+TRAIN_DATA = "%s/train.csv.short"%DATA_DIR
+TEST_DATA = "%s/test.csv.short"%DATA_DIR
+SAMPLE_DATA = "%s/sample_submission.csv"%DATA_DIR
+LABEL = "is_duplicate"                    # name of the label column
+ALL_DATA_RAW = "%s/all.raw.csv.pkl"%CLEAN_DATA_DIR
+ALL_DATA_LEMMATIZED = "%s/all.lemmatized.csv.pkl"%CLEAN_DATA_DIR
+ALL_DATA_LEMMATIZED_STEMMED = "%s/all.lemmatized.stemmed.csv.pkl"%CLEAN_DATA_DIR
+INFO_DATA = "%s/info.csv.pkl"%CLEAN_DATA_DIR
+
+# size
+TRAIN_SIZE = 1000
+if TASK == "sample":
+    TRAIN_SIZE = SAMPLE_SIZE
+TEST_SIZE = 5000
+TEST_RATIO = float(TEST_SIZE) / (TEST_SIZE + TRAIN_SIZE)
+VALID_SIZE_MAX = 700
+TRAIN_MEAN = 0.38      # mean of train label
+TRAIN_VAR = 0.2358358
+TEST_MEAN = 0.175
+TEST_VAR = TRAIN_VAR
+"""
 
 # cv
 N_RUNS = 5

@@ -22,7 +22,7 @@ os.system(cmd)
 
 #-----------------------------------------------------------------------
 # process/clean data
-cmd = "python data_processor.py"
+cmd = "python data_processor.py"          # must use run data_processor.py on princeton cluster
 os.system(cmd)
 
 
