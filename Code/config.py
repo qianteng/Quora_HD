@@ -69,11 +69,12 @@ if TASK == "sample":
 TEST_SIZE = 2345796
 TEST_RATIO = float(TEST_SIZE) / (TEST_SIZE + TRAIN_SIZE)
 VALID_SIZE_MAX = 283000 # 0.7 * TRAIN_SIZE
-TRAIN_MEAN = 0.369197      # mean of train label
+TRAIN_MEAN = 0.369197      #  mean of train label
 TRAIN_VAR = 0.232891
 TEST_MEAN = 0.175
 TEST_VAR = TRAIN_VAR
 """
+
 
 # ------------------------SAMPLE DATA ------------------------
 # provided data
