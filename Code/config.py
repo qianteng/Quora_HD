@@ -51,7 +51,7 @@ WORD_REPLACER_DATA = "%s/dict/word_replacer.csv"%DATA_DIR
 
 # ------------------------ DATA ------------------------
 # provided data
-
+"""
 TRAIN_DATA = "%s/train.csv"%DATA_DIR
 TEST_DATA = "%s/test.csv"%DATA_DIR
 SAMPLE_DATA = "%s/sample_submission.csv"%DATA_DIR
@@ -73,10 +73,11 @@ TRAIN_MEAN = 0.369197      # mean of train label
 TRAIN_VAR = 0.232891
 TEST_MEAN = 0.175
 TEST_VAR = TRAIN_VAR
+"""
 
 # ------------------------SAMPLE DATA ------------------------
 # provided data
-"""
+
 TRAIN_DATA = "%s/train.csv.short"%DATA_DIR
 TEST_DATA = "%s/test.csv.short"%DATA_DIR
 SAMPLE_DATA = "%s/sample_submission.csv"%DATA_DIR
@@ -97,7 +98,7 @@ TRAIN_MEAN = 0.38      # mean of train label
 TRAIN_VAR = 0.2358358
 TEST_MEAN = 0.175
 TEST_VAR = TRAIN_VAR
-"""
+
 
 # cv
 N_RUNS = 5

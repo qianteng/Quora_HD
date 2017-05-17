@@ -482,8 +482,8 @@ def run_lsa_ngram_cooc():
     dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)
 
     generators = [LSA_Word_Ngram_Cooc]
-    obs_ngrams = [1, 2]
-    target_ngrams = [1, 2]
+    obs_ngrams = [1, 2, 3, 4, 5]
+    target_ngrams = [1, 2, 3, 4, 5]
     obs_fields_list = []
     target_fields_list = []
     ## question1 in question2
@@ -497,30 +497,28 @@ def run_lsa_ngram_cooc():
             for target_ngram in target_ngrams:
                 for generator in generators:
                     param_list = [obs_ngram, target_ngram, config.SVD_DIM, config.SVD_N_ITER]
-                    pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger)
+                    pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger, force_corr=True)
                     pf.go()
 
 
 def run_lsa_ngram_pair():
+    """Symmetric in obs and target"""
     logname = "generate_feature_lsa_ngram_pair_%s.log"%time_utils._timestamp()
     logger = logging_utils._get_logger(config.LOG_DIR, logname)
     dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)
 
     generators = [LSA_Word_Ngram_Pair]
-    ngrams = [1, 2]
+    ngrams = [1, 2, 3, 4, 5]
     obs_fields_list = []
     target_fields_list = []
     ## question1 in question2
     obs_fields_list.append( ['question1'] )
     target_fields_list.append( ['question2'])
-    ## question2 in question1
-    obs_fields_list.append( ['question2'] )
-    target_fields_list.append( ['question1'] )
     for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
         for ngram in ngrams:
             for generator in generators:
                 param_list = [ngram, config.SVD_DIM, config.SVD_N_ITER]
-                pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger)
+                pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger, force_corr=True)
                 pf.go()
 
 
@@ -531,8 +529,7 @@ def run_tsne_lsa_ngram():
     dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)
 
     generators = [TSNE_LSA_Word_Ngram, TSNE_LSA_Char_Ngram]
-    ngrams_list = [[1,2,3], [2,3,4,5]]
-    ngrams_list = [[3], [4]]
+    ngrams_list = [[1, 2, 3, 4, 5], [2, 3, 4, 5]]
     obs_fields = ['question1', 'question2']
     for generator,ngrams in zip(generators, ngrams_list):
         for ngram in ngrams:
@@ -542,10 +539,8 @@ def run_tsne_lsa_ngram():
 
     generators = [TSNE_LSA_Word_Ngram_Pair]
     ngrams = [1, 2]
-    obs_fields_list = []
-    target_fields_list = []
-    obs_fields_list.append( ['question1', 'question2'] )
-    target_fields_list.append( ['question2', 'question1'])
+    obs_fields_list = [['question1'], ['question2']]
+    target_fields_list = [['question2'], ['question1']]
     for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
         for ngram in ngrams:
             for generator in generators:
@@ -555,42 +550,38 @@ def run_tsne_lsa_ngram():
 
 
 def run_lsa_ngram_cosinesim():
+    """Approximately symmetric in obs and target"""
     logname = "generate_feature_lsa_ngram_cosinesim_%s.log"%time_utils._timestamp()
     logger = logging_utils._get_logger(config.LOG_DIR, logname)
     dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)
 
     generators = [LSA_Word_Ngram_CosineSim, LSA_Char_Ngram_CosineSim]
-    ngrams_list = [[1,2,3], [2,3,4,5]]
-    ngrams_list = [[3], [4]]
-    obs_fields_list = []
-    target_fields_list = []
-    obs_fields_list.append( ['question1', 'question2'] )
-    target_fields_list.append( ['question2', 'question1'])
+    ngrams_list = [[1, 2, 3, 4, 5], [2, 3, 4, 5]]
+    obs_fields_list = [['question1']]
+    target_fields_list = [['question2']]
     for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
         for generator,ngrams in zip(generators, ngrams_list):
             for ngram in ngrams:
                 param_list = [ngram, config.SVD_DIM, config.SVD_N_ITER]
-                pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger)
+                pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger, force_corr=True)
                 pf.go()
 
 
 def run_tfidf_ngram_cosinesim():
+    """Symmetric in obs and target"""
     logname = "generate_feature_tfidf_ngram_cosinesim_%s.log"%time_utils._timestamp()
     logger = logging_utils._get_logger(config.LOG_DIR, logname)
     dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)
 
     generators = [TFIDF_Word_Ngram_CosineSim, TFIDF_Char_Ngram_CosineSim]
-    ngrams_list = [[1,2,3], [2,3,4,5]]
-    ngrams_list = [[3], [4]]
-    obs_fields_list = []
-    target_fields_list = []
-    obs_fields_list.append( ['question1', 'question2'] )
-    target_fields_list.append( ['question2', 'question1'])
+    ngrams_list = [[1, 2, 3, 4, 5], [2, 3, 4, 5]]
+    obs_fields_list = [['question1']]
+    target_fields_list = [['question2']]
     for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
         for generator,ngrams in zip(generators, ngrams_list):
             for ngram in ngrams:
                 param_list = [ngram]
-                pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger)
+                pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger, force_corr=True)
                 pf.go()
 
 
@@ -600,20 +591,18 @@ def run_char_dist_sim():
     dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)
     
     generators = [CharDistribution_Ratio, CharDistribution_CosineSim, CharDistribution_KL]
-    obs_fields_list = []
-    target_fields_list = []
-    obs_fields_list.append( ['question1', 'question2'] )
-    target_fields_list.append( ['question2', 'question1'])
+    obs_fields_list = [['question1'], ['question2']]
+    target_fields_list = [['question2'], ['question1']]
     for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
         for generator in generators:
             param_list = []
-            pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger)
+            pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger, force_corr=True)
             pf.go()
 
 
 if __name__ == "__main__":
 
-    run_lsa_ngram()
+    #run_lsa_ngram()
     #run_lsa_ngram_cooc()
     #run_lsa_ngram_pair()
     #run_tsne_lsa_ngram()
