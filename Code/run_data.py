@@ -16,20 +16,20 @@ import os
 
 #-----------------------------------------------------------------------
 # prepare data
-cmd = "python data_preparer.py"
-os.system(cmd)
+#cmd = "python data_preparer.py"
+#os.system(cmd)
 
 
 #-----------------------------------------------------------------------
 # process/clean data
-cmd = "python data_processor.py"          # must use run data_processor.py on princeton cluster
-os.system(cmd)
+#cmd = "python data_processor.py"          # must use run data_processor.py on princeton cluster
+#os.system(cmd)
 
 
 #-----------------------------------------------------------------------
 # generate basic features
-cmd = "python feature_basic.py &"
-os.system(cmd)
+#cmd = "python feature_basic.py &"
+#os.system(cmd)
 
 
 #-----------------------------------------------------------------------
