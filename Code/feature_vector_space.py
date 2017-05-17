@@ -609,3 +609,4 @@ if __name__ == "__main__":
     #run_lsa_ngram_cosinesim()
     #run_tfidf_ngram_cosinesim()
     #run_char_dist_sim()
+    print("Finished")
