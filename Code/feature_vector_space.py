@@ -467,7 +467,7 @@ def run_lsa_ngram():
     dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)
 
     generators = [LSA_Word_Ngram, LSA_Char_Ngram]
-    ngrams_list = [[1, 2, 3, 4], [2, 3, 4]]
+    ngrams_list = [[2, 3], [4]]
     obs_fields = ['question1', 'question2']
     for generator,ngrams in zip(generators, ngrams_list):
         for ngram in ngrams:
@@ -526,7 +526,7 @@ def run_tsne_lsa_ngram():
     dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)
 
     generators = [TSNE_LSA_Word_Ngram, TSNE_LSA_Char_Ngram]
-    ngrams_list = [[1, 2, 3, 4], [2, 3, 4]]
+    ngrams_list = [[2, 3], [4]]
     obs_fields = ['question1', 'question2']
     for generator,ngrams in zip(generators, ngrams_list):
         for ngram in ngrams:
@@ -553,7 +553,7 @@ def run_lsa_ngram_cosinesim():
     dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)
 
     generators = [LSA_Word_Ngram_CosineSim, LSA_Char_Ngram_CosineSim]
-    ngrams_list = [[1, 2, 3, 4], [2, 3, 4]]
+    ngrams_list = [[2, 3], [4]]
     obs_fields_list = [['question1']]
     target_fields_list = [['question2']]
     for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
@@ -571,7 +571,7 @@ def run_tfidf_ngram_cosinesim():
     dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)
 
     generators = [TFIDF_Word_Ngram_CosineSim, TFIDF_Char_Ngram_CosineSim]
-    ngrams_list = [[1, 2, 3, 4], [2, 3, 4]]
+    ngrams_list = [[2, 3], [4]]
     obs_fields_list = [['question1']]
     target_fields_list = [['question2']]
     for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
