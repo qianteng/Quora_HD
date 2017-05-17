@@ -22,7 +22,7 @@ import os
 
 #-----------------------------------------------------------------------
 # process/clean data
-#cmd = "python data_processor.py"          # must use run data_processor.py on princeton cluster
+#cmd = "python data_processor.py"         
 #os.system(cmd)
 
 

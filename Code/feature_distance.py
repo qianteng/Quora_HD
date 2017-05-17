@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-@author: Chenglong Chen <c.chenglong@gmail.com>
 @brief: distance features
 
 """
@@ -156,16 +155,15 @@ class CompressionDistance_Ngram(BaseEstimator):
 
 # ---------------------------- Main --------------------------------------
 def run_ngram_jaccard():
+    """Symmetric in obs and target. """
     logname = "generate_feature_ngram_jaccard_%s.log"%time_utils._timestamp()
     logger = logging_utils._get_logger(config.LOG_DIR, logname)
     dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)
 
     generators = [JaccardCoef_Ngram, DiceDistance_Ngram]
-    obs_fields_list = []
-    target_fields_list = []
-    obs_fields_list.append( ["search_term", "search_term_product_name", "search_term_alt", "search_term_auto_corrected"][:2] )
-    target_fields_list.append( ["product_title", "product_title_product_name", "product_description", "product_attribute", "product_brand", "product_color"] )
-    ngrams = [1,2,3,12,123][:3]
+    obs_fields_list = [["question1"]]
+    target_fields_list = [["question2"]]
+    ngrams = [1, 2, 3]
     for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
         for generator in generators:
             for ngram in ngrams:
@@ -179,11 +177,9 @@ def run_edit_distance():
     logger = logging_utils._get_logger(config.LOG_DIR, logname)
     dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)
 
-    obs_fields_list = []
-    target_fields_list = []
-    obs_fields_list.append( ["search_term", "search_term_product_name", "search_term_alt", "search_term_auto_corrected"][:2] )
-    target_fields_list.append( ["product_title", "product_title_product_name", "product_description", "product_attribute", "product_brand", "product_color"] )
-    ngrams = [1,2,3,12,123][:3]
+    obs_fields_list = [["question1"], ["question2"]]
+    target_fields_list = [["question2"], ["question1"]]
+    ngrams = [1, 2, 3]
     aggregation_mode_prev = ["mean", "max", "min", "median"]
     aggregation_mode = ["mean", "std", "max", "min", "median"]
     for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
@@ -199,12 +195,13 @@ def run_edit_distance():
 def run_compression_distance():
     logname = "generate_feature_compression_distance_%s.log"%time_utils._timestamp()
     logger = logging_utils._get_logger(config.LOG_DIR, logname)
-    dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)
+    dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)[:100]
 
-    obs_fields_list = []
-    target_fields_list = []
-    obs_fields_list.append( ["search_term", "search_term_product_name", "search_term_alt", "search_term_auto_corrected"][:2] )
-    target_fields_list.append( ["product_title", "product_title_product_name", "product_description", "product_attribute", "product_brand", "product_color"] )
+    obs_fields_list = [["question1"], ["question2"]]
+    target_fields_list = [["question2"], ["question1"]]
+    ngrams = [1, 2, 3]
+    aggregation_mode_prev = ["mean", "max", "min", "median"]
+    aggregation_mode = ["mean", "std", "max", "min", "median"]
     for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
         param_list = []
         pf = PairwiseFeatureWrapper(CompressionDistance, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger)
