@@ -151,10 +151,10 @@ RANDOM_SEED = 2017
 PLATFORM = platform.system()
 NUM_CORES = 4 if PLATFORM == "Darwin" else 16
 
-DATA_PROCESSOR_N_JOBS = 4 if PLATFORM == "Darwin" else 1
-AUTO_SPELLING_CHECKER_N_JOBS = 4 if PLATFORM == "Darwin" else 8
+DATA_PROCESSOR_N_JOBS = 4 if PLATFORM == "Darwin" else 16
+AUTO_SPELLING_CHECKER_N_JOBS = 4 if PLATFORM == "Darwin" else 16
 # multi processing is not faster
-AUTO_SPELLING_CHECKER_N_JOBS = 1
+AUTO_SPELLING_CHECKER_N_JOBS = 16
 
 ## rgf
 #RGF_CALL_EXE = "%s/rgf1.2/test/call_exe.pl"%THIRDPARTY_DIR

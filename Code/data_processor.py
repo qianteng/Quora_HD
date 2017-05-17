@@ -19,7 +19,6 @@ import ipdb
 
 import config
 from utils import ngram_utils, pkl_utils, logging_utils, time_utils
-#from spelling_checker import GoogleQuerySpellingChecker, AutoSpellingChecker
 
 
 #--------------------------- Processor ---------------------------
@@ -351,8 +350,6 @@ def main():
         DigitCommaDigitMerger(), 
         NumberDigitMapper(),
         UnitConverter(), 
-        #QuartetCleaner(), 
-        #HtmlCleaner(parser="html.parser"), 
         Lemmatizer(),
     ]
     stemmers = [
@@ -375,16 +372,6 @@ def main():
     ## load raw data
     dfAll = pkl_utils._load(config.ALL_DATA_RAW)
     columns_to_proc = [col for col in columns_to_proc if col in dfAll.columns]
-
-    ## clean using GoogleQuerySpellingChecker
-    # MUST BE IN FRONT OF ALL THE PROCESSING
-    # Not used in Quora project
-    #if config.GOOGLE_CORRECTING_QUERY:
-    #    logger.info("Run GoogleQuerySpellingChecker")
-    #    checker = GoogleQuerySpellingChecker()
-    #    dfAll["question1"] = dfAll["question1"].apply(checker.correct)
-    #    dfAll["question2"] = dfAll["question2"].apply(checker.correct)
-
 
     ## clean uisng a list of processors
     df_processor = DataFrameParallelProcessor(processors, config.DATA_PROCESSOR_N_JOBS)
