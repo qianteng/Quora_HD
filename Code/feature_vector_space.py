@@ -16,6 +16,7 @@ import ipdb
 import scipy
 import numpy as np
 import pandas as pd
+import gc
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
@@ -474,6 +475,8 @@ def run_lsa_ngram():
             param_list = [ngram, config.SVD_DIM, config.SVD_N_ITER]
             sf = StandaloneFeatureWrapper(generator, dfAll, obs_fields, param_list, config.FEAT_DIR, logger, force_corr=True)
             sf.go()
+            del sf
+            gc.collect()
 
 
 def run_lsa_ngram_cooc():
@@ -496,6 +499,8 @@ def run_lsa_ngram_cooc():
                     param_list = [obs_ngram, target_ngram, config.SVD_DIM, config.SVD_N_ITER]
                     pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger, force_corr=True)
                     pf.go()
+                    del pf
+                    gc.collect()
 
 
 def run_lsa_ngram_pair():
@@ -517,6 +522,8 @@ def run_lsa_ngram_pair():
                 param_list = [ngram, config.SVD_DIM, config.SVD_N_ITER]
                 pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger, force_corr=True)
                 pf.go()
+                del pf
+                gc.collect()
 
 
 # memory error (use feature_tsne.R instead)
@@ -533,6 +540,8 @@ def run_tsne_lsa_ngram():
             param_list = [ngram, config.SVD_DIM, config.SVD_N_ITER]
             sf = StandaloneFeatureWrapper(generator, dfAll, obs_fields, param_list, config.FEAT_DIR, logger, force_corr=True)
             sf.go()
+            del sf
+            gc.collect()
 
     generators = [TSNE_LSA_Word_Ngram_Pair]
     ngrams = [1, 2]
@@ -544,6 +553,8 @@ def run_tsne_lsa_ngram():
                 param_list = [ngram, config.SVD_DIM, config.SVD_N_ITER]
                 pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger, force_corr=True)
                 pf.go()
+                del pf
+                gc.collect()
 
 
 def run_lsa_ngram_cosinesim():
@@ -562,6 +573,8 @@ def run_lsa_ngram_cosinesim():
                 param_list = [ngram, config.SVD_DIM, config.SVD_N_ITER]
                 pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger, force_corr=True)
                 pf.go()
+                del pf
+                gc.collect()
 
 
 def run_tfidf_ngram_cosinesim():
@@ -580,6 +593,8 @@ def run_tfidf_ngram_cosinesim():
                 param_list = [ngram]
                 pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger, force_corr=True)
                 pf.go()
+                del pf
+                gc.collect()
 
 
 def run_char_dist_sim():
@@ -595,6 +610,8 @@ def run_char_dist_sim():
             param_list = []
             pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger, force_corr=True)
             pf.go()
+            del pf
+            gc.collect()
 
 
 if __name__ == "__main__":
