@@ -4,6 +4,7 @@ Result/
 .DS_Store
 *~
 _*_
+#*#
 *.pyc
 *.ipynb*
 *.pkl
