@@ -145,7 +145,6 @@ def main():
     logger = logging_utils._get_logger(config.LOG_DIR, logname)
     #### NOTE: use data BEFORE STEMMING
     dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED)
-    dfAll = dfAll.loc[:10]
 
     # WordNet_Lch_Similarity and WordNet_Wup_Similarity are not used in final submission
     generators = [
@@ -155,8 +154,8 @@ def main():
     ][:1]
     obs_fields_list = []
     target_fields_list = []
-    obs_fields_list.append( ['question1', 'question2'] )
-    target_fields_list.append( ['question2', 'question1'])
+    obs_fields_list.append( ['question1'] )
+    target_fields_list.append( ['question2'])
     # double aggregation
     aggregation_mode_prev = ["mean", "max", "min", "median"]
     aggregation_mode = ["mean", "std", "max", "min", "median"]
