@@ -23,5 +23,5 @@ suffix = 'test'
 #cmd = "python feature_combiner.py -l 1 -c feature_conf_nonlinear_%s -n basic_nonlinear_%s -t %.6f"%(suffix, suffix, threshold)
 #os.system(cmd)
 
-cmd = "python task.py -m single -f basic_nonlinear_%s -l clf_xgb_tree -e 1"%suffix
+cmd = "python task.py -m single -f basic_nonlinear_%s -l clf_xgb_tree -e 20"%suffix
 os.system(cmd)
