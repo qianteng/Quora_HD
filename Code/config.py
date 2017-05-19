@@ -151,7 +151,7 @@ STOP_WORDS = set(ENGLISH_STOP_WORDS)
 # ------------------------ OTHER ------------------------
 RANDOM_SEED = 2017
 PLATFORM = platform.system()
-NUM_CORES = 4 if PLATFORM == "Darwin" else 16
+NUM_CORES = 4 if PLATFORM == "Darwin" else 3
 
 DATA_PROCESSOR_N_JOBS = 4 if PLATFORM == "Darwin" else 16
 AUTO_SPELLING_CHECKER_N_JOBS = 4 if PLATFORM == "Darwin" else 16
