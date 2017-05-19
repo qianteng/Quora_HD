@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-@author: Chenglong Chen <c.chenglong@gmail.com>
 @brief: first and last ngram features
 @note: in the final submission, we only used intersect count, NOT including intersect position.
 
@@ -205,15 +204,9 @@ def run_count():
         LastIntersectRatio_Ngram, 
     ]
 
-    obs_fields_list = []
-    target_fields_list = []
-    ## query in document
-    obs_fields_list.append( ["search_term", "search_term_product_name", "search_term_alt", "search_term_auto_corrected"][:2] )
-    target_fields_list.append( ["product_title", "product_title_product_name", "product_description", "product_attribute", "product_brand", "product_color"] )
-    ## document in query
-    obs_fields_list.append( ["product_title", "product_title_product_name", "product_description", "product_attribute", "product_brand", "product_color"] )
-    target_fields_list.append( ["search_term", "search_term_product_name", "search_term_alt", "search_term_auto_corrected"][:2] )
-    ngrams = [1,2,3,12,123][:3]
+    obs_fields_list = [["question1"], ["question2"]]
+    target_fields_list = [["question2"], ["question1"]]
+    ngrams = [1,2,3,12,123]
     for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
         for generator in generators:
             for ngram in ngrams:
@@ -233,16 +226,10 @@ def run_position():
         FirstIntersectNormPosition_Ngram, 
         LastIntersectNormPosition_Ngram, 
     ]
-
-    obs_fields_list = []
-    target_fields_list = []
-    ## query in document
-    obs_fields_list.append( ["search_term", "search_term_product_name", "search_term_alt", "search_term_auto_corrected"][:2] )
-    target_fields_list.append( ["product_title", "product_title_product_name", "product_description", "product_attribute", "product_brand", "product_color"] )
-    ## document in query
-    obs_fields_list.append( ["product_title", "product_title_product_name", "product_description", "product_attribute", "product_brand", "product_color"] )
-    target_fields_list.append( ["search_term", "search_term_product_name", "search_term_alt", "search_term_auto_corrected"][:2] )
-    ngrams = [1,2,3,12,123][:3]
+    
+    obs_fields_list = [["question1"], ["question2"]]
+    target_fields_list = [["question2"], ["question1"]]
+    ngrams = [1,2,3,12,123]
     aggregation_mode = ["mean", "std", "max", "min", "median"]
     for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
         for generator in generators:
@@ -254,5 +241,4 @@ def run_position():
 
 if __name__ == "__main__":
     run_count()
-    # # not used in final submission
-    # run_position()
+    run_position()
