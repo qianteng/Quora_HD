@@ -195,7 +195,7 @@ def run_edit_distance():
 def run_compression_distance():
     logname = "generate_feature_compression_distance_%s.log"%time_utils._timestamp()
     logger = logging_utils._get_logger(config.LOG_DIR, logname)
-    dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)[:100]
+    dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)
 
     obs_fields_list = [["question1"], ["question2"]]
     target_fields_list = [["question2"], ["question1"]]
