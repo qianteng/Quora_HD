@@ -84,7 +84,7 @@ def train_word2vec_model(df, columns):
         "workers": config.EMBEDDING_WORKERS,
     }
     model_dir = config.WORD2VEC_MODEL_DIR
-    model_name = "Homedepot-word2vec-D%d-min_count%d.model"%(
+    model_name = "Quora-word2vec-D%d-min_count%d.model"%(
                     model_param["size"], model_param["min_count"])
 
     word2vec = DataFrameWord2Vec(df, columns, model_param)
@@ -155,7 +155,7 @@ def train_doc2vec_model(df, columns):
         "workers": config.EMBEDDING_WORKERS,
     }
     model_dir = config.DOC2VEC_MODEL_DIR
-    model_name = "Homedepot-doc2vec-D%d-min_count%d.model"%(
+    model_name = "Quora-doc2vec-D%d-min_count%d.model"%(
                     model_param["size"], model_param["min_count"])
 
     doc2vec = DataFrameDoc2Vec(df, columns, model_param)
@@ -166,8 +166,7 @@ def train_doc2vec_model(df, columns):
 #---------------------- Main ----------------------
 if __name__ == "__main__":
     df = pkl_utils._load(config.ALL_DATA_LEMMATIZED)
-    columns = ["search_term", "search_term_alt", "product_title", "product_description",
-                "product_attribute", "product_brand", "product_color"]
+    columns = ["question1", "question2"]
     columns = [col for col in columns if col in df.columns]
 
     if len(sys.argv) >= 2:

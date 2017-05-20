@@ -7,6 +7,7 @@
 import re
 import sys
 import string
+import ipdb
 
 import gensim
 import numpy as np
@@ -206,11 +207,7 @@ def main(which):
 
     word2vec_model_dirs = []
     model_prefixes = []
-    if which == "homedepot":
-        ## word2vec model trained with Homedepot dataset: brand/color/query/title/description
-        word2vec_model_dirs.append( config.WORD2VEC_MODEL_DIR + "/Homedepot-word2vec-D%d-min_count%d.model"%(config.EMBEDDING_DIM, config.EMBEDDING_MIN_COUNT) )
-        model_prefixes.append( "Homedepot" )
-    elif which == "wikipedia":
+    if which == "wikipedia":
         ## word2vec model pretrained with Wikipedia+Gigaword 5
         word2vec_model_dirs.append( config.GLOVE_WORD2VEC_MODEL_DIR + "/glove.6B.300d.txt" )
         model_prefixes.append( "Wikipedia" )
@@ -218,6 +215,10 @@ def main(which):
         ## word2vec model pretrained with Google News
         word2vec_model_dirs.append( config.WORD2VEC_MODEL_DIR + "/GoogleNews-vectors-negative300.bin" )
         model_prefixes.append( "GoogleNews" )
+    elif which == "quota":
+        ## word2vec model trained with Homedepot dataset: brand/color/query/title/description
+        word2vec_model_dirs.append( config.WORD2VEC_MODEL_DIR + "/Quora-word2vec-D%d-min_count%d.model"%(config.EMBEDDING_DIM, config.EMBEDDING_MIN_COUNT) )
+        model_prefixes.append( "Quora" )
     print("word2vec mode: {}".format(which))
     
     for word2vec_model_dir, model_prefix in zip(word2vec_model_dirs, model_prefixes):
@@ -226,19 +227,14 @@ def main(which):
             if ".bin" in word2vec_model_dir:
                 word2vec_model = gensim.models.Word2Vec.load_word2vec_format(word2vec_model_dir, binary=True)
             elif ".txt" in word2vec_model_dir:
+                #ipdb.set_trace()
                 word2vec_model = gensim.models.Word2Vec.load_word2vec_format(word2vec_model_dir, binary=False)
             else:
                 word2vec_model = gensim.models.Word2Vec.load(word2vec_model_dir)
         except:
             continue
 
-        # ## standalone (not used in model building)
-        # obs_fields = ["search_term", "product_title", "product_description"]
-        # generator = Word2Vec_Centroid_Vector
-        # param_list = [word2vec_model, model_prefix]
-        # sf = StandaloneFeatureWrapper(generator, dfAll, obs_fields, param_list, config.FEAT_DIR, logger)
-        # sf.go()
-
+        
         ## pairwise
         generators = [
             Word2Vec_Importance,
@@ -247,12 +243,10 @@ def main(which):
             Word2Vec_Centroid_RMSE, 
             Word2Vec_Centroid_RMSE_IMP,
             # # not used in final submission
-            # Word2Vec_Centroid_Vdiff, 
+            Word2Vec_Centroid_Vdiff, 
         ]
-        obs_fields_list = []
-        target_fields_list = []
-        obs_fields_list.append( ["search_term", "search_term_alt", "search_term_auto_corrected"][:1] )
-        target_fields_list.append( ["product_title", "product_description", "product_attribute", "product_brand", "product_color"] )
+        obs_fields_list = [["question1", "question2"]]
+        target_fields_list = [["question2", "question1"]]
         for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
             for generator in generators:
                 param_list = [word2vec_model, model_prefix]
@@ -272,6 +266,6 @@ def main(which):
                 pf = PairwiseFeatureWrapper(generator, dfAll, obs_fields, target_fields, param_list, config.FEAT_DIR, logger)
                 pf.go()
 
-
 if __name__ == "__main__":
     main(sys.argv[1])
+
