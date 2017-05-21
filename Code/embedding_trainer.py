@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-@author: Chenglong Chen <c.chenglong@gmail.com>
 @brief: word2vec & doc2vec trainer
 
 """

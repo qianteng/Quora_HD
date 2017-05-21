@@ -101,8 +101,8 @@ def main():
     doc2vec_model_dirs = []
     model_prefixes = []
     ## doc2vec model trained with Homedepot dataset: brand/color/obs/title/description
-    doc2vec_model_dirs.append( config.DOC2VEC_MODEL_DIR + "/Homedepot-doc2vec-D%d-min_count%d.model"%(config.EMBEDDING_DIM, config.EMBEDDING_MIN_COUNT) )
-    model_prefixes.append( "Homedepot" )
+    doc2vec_model_dirs.append( config.DOC2VEC_MODEL_DIR + "/Quora-doc2vec-D%d-min_count%d.model"%(config.EMBEDDING_DIM, config.EMBEDDING_MIN_COUNT) )
+    model_prefixes.append( "Quora" )
     for doc2vec_model_dir, model_prefix in zip(doc2vec_model_dirs, model_prefixes):
         ## load model
         try:
@@ -115,24 +115,15 @@ def main():
                 doc2vec_model_sent_label = pkl_utils._load(doc2vec_model_dir+".sent_label")
         except:
             continue
-
-        # ## standalone (not used in model building)
-        # obs_fields = ["search_term", "search_term_alt", "product_title", "product_description", "product_attribute"]
-        # generator = Doc2Vec_Vector
-        # param_list = [doc2vec_model, doc2vec_model_sent_label, model_prefix]
-        # sf = StandaloneFeatureWrapper(generator, dfAll, obs_fields, param_list, config.FEAT_DIR, logger)
-        # sf.go()
-
+        
         ## pairwise
         generators = [
             Doc2Vec_CosineSim, 
             Doc2Vec_RMSE, 
-            # Doc2Vec_Vdiff, 
+            Doc2Vec_Vdiff, 
         ]
-        obs_fields_list = []
-        target_fields_list = []
-        obs_fields_list.append( ["search_term", "search_term_alt"][:1] )
-        target_fields_list.append( ["product_title", "product_description", "product_attribute", "product_brand", "product_color"] )
+        obs_fields_list = [["question1", "question2"]]
+        target_fields_list = [["question2", "question1"]]
         for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
             for generator in generators:
                 param_list = [doc2vec_model, doc2vec_model_sent_label, model_prefix]
