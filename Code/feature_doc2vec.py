@@ -121,8 +121,8 @@ def main():
             Doc2Vec_RMSE, 
             Doc2Vec_Vdiff, 
         ]
-        obs_fields_list = [["question1", "question2"]]
-        target_fields_list = [["question2", "question1"]]
+        obs_fields_list = [["question1"]]
+        target_fields_list = [["question2"]]
         for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
             for generator in generators:
                 param_list = [doc2vec_model, doc2vec_model_sent_label, model_prefix]
