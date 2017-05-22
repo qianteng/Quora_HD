@@ -252,7 +252,7 @@ def main():
     dfAll = pkl_utils._load(config.ALL_DATA_LEMMATIZED_STEMMED)
 
     ## basic
-    generators = [DocId, DocIdOneHot, DocLen, DocFreq, DocEntropy, DigitCount, DigitRatio]
+    generators = [DocId, DocLen, DocFreq, DocEntropy, DigitCount, DigitRatio]   #DocIdOneHot not used
     obs_fields = ["question1", "question2"] 
     for generator in generators:
         param_list = []

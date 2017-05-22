@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-@author: Chenglong Chen <c.chenglong@gmail.com>
 @brief: doc2vec based features
 
 """
@@ -100,7 +99,7 @@ def main():
 
     doc2vec_model_dirs = []
     model_prefixes = []
-    ## doc2vec model trained with Homedepot dataset: brand/color/obs/title/description
+    ## doc2vec model trained with Quora dataset: question1/question2
     doc2vec_model_dirs.append( config.DOC2VEC_MODEL_DIR + "/Quora-doc2vec-D%d-min_count%d.model"%(config.EMBEDDING_DIM, config.EMBEDDING_MIN_COUNT) )
     model_prefixes.append( "Quora" )
     for doc2vec_model_dir, model_prefix in zip(doc2vec_model_dirs, model_prefixes):

@@ -215,8 +215,8 @@ def main(which):
         ## word2vec model pretrained with Google News
         word2vec_model_dirs.append( config.WORD2VEC_MODEL_DIR + "/GoogleNews-vectors-negative300.bin" )
         model_prefixes.append( "GoogleNews" )
-    elif which == "quota":
-        ## word2vec model trained with Homedepot dataset: brand/color/query/title/description
+    elif which == "quora":
+        ## word2vec model trained with Quora dataset: question1/question2
         word2vec_model_dirs.append( config.WORD2VEC_MODEL_DIR + "/Quora-word2vec-D%d-min_count%d.model"%(config.EMBEDDING_DIM, config.EMBEDDING_MIN_COUNT) )
         model_prefixes.append( "Quora" )
     print("word2vec mode: {}".format(which))
