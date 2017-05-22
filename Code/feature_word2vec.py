@@ -242,11 +242,9 @@ def main(which):
             Word2Vec_N_Similarity_Imp, 
             Word2Vec_Centroid_RMSE, 
             Word2Vec_Centroid_RMSE_IMP,
-            # # not used in final submission
-            Word2Vec_Centroid_Vdiff, 
         ]
-        obs_fields_list = [["question1", "question2"]]
-        target_fields_list = [["question2", "question1"]]
+        obs_fields_list = [["question1"], ["question2"]]
+        target_fields_list = [["question2"], ["question1"]]
         for obs_fields, target_fields in zip(obs_fields_list, target_fields_list):
             for generator in generators:
                 param_list = [word2vec_model, model_prefix]
