@@ -58,15 +58,13 @@ MANDATORY_FEATS = [
 COMMENT_OUT_FEATS = [
 
 #-------------- General --------------
-#"search_term_alt",
+#"Bigram",
+#"Trigram",
+#"UBgram",
+#"UBTgram",
 
-"Bigram",
-"Trigram",
-"UBgram",
-"UBTgram",
-
-"Median",
-"Std",
+#"Median",
+#"Std",
 
 #".+(Bigram|Trigram)_.+_product_(brand|color)",
 
@@ -112,7 +110,7 @@ COMMENT_OUT_FEATS = [
 
 
 #-------------- Match --------------
-"LongestMatchSize",
+#"LongestMatchSize",
 
 
 #-------------- StatCooc --------------
@@ -120,39 +118,39 @@ COMMENT_OUT_FEATS = [
 #"StatCooc(TF|NormTF|TFIDF|NormTFIDF|BM25)_Bigram_(Std|Max|Min|Median)_search_term_product_name_x_product_title_product_name_1D",
 #"StatCooc(TF|NormTF|TFIDF|NormTFIDF|BM25)_Bigram_(Std|Max|Min|Median)_product_title_product_name_x_search_term_product_name_1D",
 
-"NormTF",
-"NormTFIDF",
+#"NormTF",
+#"NormTFIDF",
 
 
 #-------------- Vector Space --------------
 # as TFIDF_Word_Trigram has the largest corr
-"LSA\d+_Word_Unigram",
-"LSA\d+_Word_Bigram",
-"TFIDF_Word_Unigram",
-"TFIDF_Word_Bigram",
+#"LSA\d+_Word_Unigram",
+#"LSA\d+_Word_Bigram",
+#"TFIDF_Word_Unigram",
+#"TFIDF_Word_Bigram",
 
 # as TFIDF_Char_Fourgram has the largest corr
-"LSA\d+_Char_Bigram",
-"LSA\d+_Char_Trigram",
-"LSA\d+_Char_Fivegram",
-"TFIDF_Char_Bigram",
-"TFIDF_Char_Trigram",
-"TFIDF_Char_Fivegram",
+#"LSA\d+_Char_Bigram",
+#"LSA\d+_Char_Trigram",
+#"LSA\d+_Char_Fivegram",
+#"TFIDF_Char_Bigram",
+#"TFIDF_Char_Trigram",
+#"TFIDF_Char_Fivegram",
 
-"CharDistribution_Ratio",
+#"CharDistribution_Ratio",
 
 
 #-------------- Word2Vec & Doc2Vec --------------
-"_Vector_", 
-"_Vdiff_", 
-"Word2Vec_Wikipedia_D50",
-"Word2Vec_Wikipedia_D100",
-"Word2Vec_Wikipedia_D200",
-# "Word2Vec_GoogleNews",
-"Word2Vec_GoogleNews_D300_Vector",
+#"_Vector_", 
+#"_Vdiff_", 
+#"Word2Vec_Wikipedia_D50",
+#"Word2Vec_Wikipedia_D100",
+#"Word2Vec_Wikipedia_D200",
+## "Word2Vec_GoogleNews",
+#"Word2Vec_GoogleNews_D300_Vector",
 # as all the words are used to train the model
-"Word2Vec_Homedepot_D100_Importance",
-"Word2Vec_Homedepot_D100_N_Similarity_Imp",
+#"Word2Vec_Homedepot_D100_Importance",
+#"Word2Vec_Homedepot_D100_N_Similarity_Imp",
 
 
 #-------------- Turing Test --------------
