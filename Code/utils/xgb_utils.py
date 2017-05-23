@@ -184,7 +184,7 @@ class XGBClassifier:
         self.save_topn_features()
         return ax
 
-    def save_topn_features(self, fname="XGBClassifier_topn_features.txt", topn=10):
+    def save_topn_features(self, fname="XGBClassifier_topn_features.txt", topn=-1):
         ax = xgb.plot_importance(self.model)
         yticklabels = ax.get_yticklabels()[::-1]
         if topn == -1:
