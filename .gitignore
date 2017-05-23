@@ -2,6 +2,7 @@ Data/
 Code/conf/
 Result/
 Fig/
+Tmp/
 .DS_Store
 *~
 _*_

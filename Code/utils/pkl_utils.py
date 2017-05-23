@@ -9,6 +9,7 @@ import pickle
 
 
 def _save(fname, data, protocol=3):
+    # use protocol=4 to save files larger than 4GB
     with open(fname, "wb") as f:
         pickle.dump(data, f, protocol)
 
