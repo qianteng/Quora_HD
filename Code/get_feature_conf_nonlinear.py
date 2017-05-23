@@ -15,6 +15,7 @@
 
 import re
 import os
+import pandas as pd
 from optparse import OptionParser
 
 import config
@@ -176,6 +177,11 @@ COMMENT_OUT_FEATS = [
 
 ]
 
+
+for file in sorted(os.listdir(config.FEAT_COMM_NONLINEAR_DIR)):  # comment out the last 0.1 of features in the files
+    feature_list = pd.read_table(config.FEAT_COMM_NONLINEAR_DIR + '/' + file, header = None).values.flatten().tolist()
+    drop_ratio = 0.1
+    COMMENT_OUT_FEATS = COMMENT_OUT_FEATS + feature_list[-int(len(feature_list) * drop_ratio):]
 
 def _check_include(fname):
     for v in INCLUDE_FEATS:

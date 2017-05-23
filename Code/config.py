@@ -28,6 +28,8 @@ CLEAN_DATA_DIR = "%s/Clean"%DATA_DIR
 FEAT_DIR = "%s/Feat"%ROOT_DIR
 FEAT_FILE_SUFFIX = ".pkl"
 FEAT_CONF_DIR = "./conf"
+FEAT_COMM_NONLINEAR_DIR = "./comm_nonlinear"         # comment out features
+FEAT_COMM_LINEAR_DIR = "./comm_linear" 
 
 OUTPUT_DIR = "%s/Output"%ROOT_DIR
 SUBM_DIR = "%s/Subm"%OUTPUT_DIR
@@ -168,7 +170,7 @@ AUTO_SPELLING_CHECKER_N_JOBS = 16
 DIRS = []
 DIRS += [CLEAN_DATA_DIR]
 DIRS += [SPLIT_DIR]
-DIRS += [FEAT_DIR, FEAT_CONF_DIR]
+DIRS += [FEAT_DIR, FEAT_CONF_DIR, FEAT_COMM_NONLINEAR_DIR, FEAT_COMM_LINEAR_DIR]
 DIRS += ["%s/All"%FEAT_DIR]
 DIRS += ["%s/Run%d"%(FEAT_DIR,i+1) for i in range(N_RUNS)]
 DIRS += ["%s/Combine"%FEAT_DIR]
