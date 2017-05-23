@@ -228,7 +228,7 @@ class Combiner:
             "feature_names": self.feature_names
         }
         fname = os.path.join(config.FEAT_DIR+"/Combine", self.feature_name+config.FEAT_FILE_SUFFIX)
-        pkl_utils._save(fname, data_dict)
+        pkl_utils._save(fname, data_dict, protocol=4)
         self.logger.info("Save to %s" % fname)
 
 
@@ -410,7 +410,7 @@ class StackingCombiner:
             "feature_names": self.feature_names,
         }
         fname = os.path.join(config.FEAT_DIR+"/Combine", self.feature_name+config.FEAT_FILE_SUFFIX)
-        pkl_utils._save(fname, data_dict)
+        pkl_utils._save(fname, data_dict, protocol=4)
         self.logger.info("Save to %s" % fname)
 
 
