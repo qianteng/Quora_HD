@@ -34,12 +34,12 @@ params = {'base_score': 0.369197, 'booster': 'gbtree', 'colsample_bylevel': 0.4,
           'eval_metric': 'logloss', 'objective': 'binary:logistic', 'alpha': 9.817830899287001,
           'lambda': 0.7386562144326775, 'seed': 2017, 'subsample': 0.85, 'silent': 1}
 num_round = 50
-d_train = xgb.DMatrix(X_train_cv, label=y_train_cv)
-d_valid = xgb.DMatrix(X_valid_cv, label=y_valid_cv)
+d_train = xgb.DMatrix(X_train_cv, label=y_train_cv, feature_names = data_dict["feature_names"])
+d_valid = xgb.DMatrix(X_valid_cv, label=y_valid_cv, feature_names = data_dict["feature_names"])
 watchlist = [(d_train, 'train_cv'), (d_valid, 'valid_cv')]
 bst = xgb.train(params, d_train, num_round, watchlist, early_stopping_rounds=50, verbose_eval=10)
 
-d_test = xgb.DMatrix(X_test)
+d_test = xgb.DMatrix(X_test, feature_names = data_dict["feature_names")
 p_test = bst.predict(d_test)
 sub = pd.DataFrame()
 test = pd.read_csv(config.TEST_DATA, encoding="ISO-8859-1")
