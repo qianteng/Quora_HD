@@ -5,6 +5,8 @@ import gc
 import ipdb
 from sklearn.metrics import log_loss
 import xgboost as xgb
+import matplotlib
+matplotlib.use('Agg')
 
 import config
 from utils import pkl_utils
