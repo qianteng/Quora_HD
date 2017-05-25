@@ -104,7 +104,7 @@ TEST_VAR = TRAIN_VAR
 """
 
 # cv
-N_RUNS = 3
+N_RUNS = 5
 N_FOLDS = 1
 
 # intersect count/match
