@@ -33,7 +33,7 @@ params = {'base_score': 0.369197, 'booster': 'gbtree', 'colsample_bylevel': 0.4,
           'gamma': 0.08759523291635393, 'eta': 0.072, 'max_depth': 6, 'min_child_weight': 1.6010959785458306e-10,
           'eval_metric': 'logloss', 'objective': 'binary:logistic', 'alpha': 9.817830899287001,
           'lambda': 0.7386562144326775, 'seed': 2017, 'subsample': 0.85, 'silent': 1}
-num_round = 500
+num_round = 50
 d_train = xgb.DMatrix(X_train_cv, label=y_train_cv)
 d_valid = xgb.DMatrix(X_valid_cv, label=y_valid_cv)
 watchlist = [(d_train, 'train_cv'), (d_valid, 'valid_cv')]
@@ -52,9 +52,11 @@ path = os.path.join(config.OUTPUT_DIR + '/Subm', 'xgb_manual.csv')
 sub.to_csv(path, index=False)
 
 ax = xgb.plot_importance(bst)
+ax.figure.savefig("%s/%s.pdf"%(config.FIG_DIR, "feature_importance"))
 yticklabels = ax.get_yticklabels()[::-1]
 topn = len(yticklabels)
 fname = "XGBClassifier_topn_features.txt"
 with open(fname, "w") as f:
     for i in range(topn):
         f.write("%s\n"%yticklabels[i].get_text())
+
