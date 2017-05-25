@@ -48,3 +48,11 @@ except:
     sub['is_duplicate'] = p_test[:,1]
 path = os.path.join(config.OUTPUT_DIR + '/Subm', 'xgb_manual.csv')
 sub.to_csv(path, index=False)
+
+ax = xgb.plot_importance(bst)
+yticklabels = ax.get_yticklabels()[::-1]
+topn = len(yticklabels)
+fname = "XGBClassifier_topn_features.txt"
+with open(fname, "w") as f:
+    for i in range(topn):
+        f.write("%s\n"%yticklabels[i].get_text())
