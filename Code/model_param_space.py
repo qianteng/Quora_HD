@@ -78,7 +78,7 @@ param_space_reg_xgb_tree_best_single_model = {
     "nthread": xgb_nthread,
     "seed": xgb_random_seed,
 }
-"""
+
 ## classification with tree booster  Done
 param_space_clf_xgb_tree = {
     "booster": "gbtree",
@@ -98,10 +98,10 @@ param_space_clf_xgb_tree = {
     "nthread": xgb_nthread,
     "seed": xgb_random_seed,
 }
-"""
 
-## classification with tree booster for test  Done
-param_space_clf_xgb_tree = {
+
+## classification with tree booster with only one set of paramter Done
+param_space_clf_xgb_tree_single = {
     "booster": "gbtree",
     "objective": "multi:softprob",
     "num_class": 2,
@@ -315,6 +315,7 @@ param_space_dict = {
     "reg_xgb_tree_best_single_model": param_space_reg_xgb_tree_best_single_model,
     "reg_xgb_linear": param_space_reg_xgb_linear,
     "clf_xgb_tree": param_space_clf_xgb_tree,
+    "clf_xgb_tree_single": param_space_clf_xgb_tree_single,
     # sklearn
     "reg_skl_lasso": param_space_reg_skl_lasso,
     "reg_skl_ridge": param_space_reg_skl_ridge,
