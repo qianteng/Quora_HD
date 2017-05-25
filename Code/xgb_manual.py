@@ -39,7 +39,7 @@ d_valid = xgb.DMatrix(X_valid_cv, label=y_valid_cv, feature_names = data_dict["f
 watchlist = [(d_train, 'train_cv'), (d_valid, 'valid_cv')]
 bst = xgb.train(params, d_train, num_round, watchlist, early_stopping_rounds=50, verbose_eval=10)
 
-d_test = xgb.DMatrix(X_test, feature_names = data_dict["feature_names")
+d_test = xgb.DMatrix(X_test, feature_names = data_dict["feature_names"])
 p_test = bst.predict(d_test)
 sub = pd.DataFrame()
 test = pd.read_csv(config.TEST_DATA, encoding="ISO-8859-1")
