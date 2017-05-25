@@ -17,6 +17,7 @@ else:
     threshold = 0.05
 
 suffix = 'dropsome'
+threshold = 0.05
 cmd = "python get_feature_conf_nonlinear.py -d 10 -o feature_conf_nonlinear_%s.py"%suffix
 os.system(cmd)
 
