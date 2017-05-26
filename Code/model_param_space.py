@@ -323,6 +323,8 @@ param_space_dict = {
     "reg_xgb_linear": param_space_reg_xgb_linear,
     "clf_xgb_tree": param_space_clf_xgb_tree,
     "clf_xgb_tree_single": param_space_clf_xgb_tree_single,
+    # sklearn classifier
+    "clf_skl_ridge": param_space_clf_skl_ridge,
     # sklearn
     "reg_skl_lasso": param_space_reg_skl_lasso,
     "reg_skl_ridge": param_space_reg_skl_ridge,
