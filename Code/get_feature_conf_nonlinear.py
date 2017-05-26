@@ -46,8 +46,8 @@ MANDATORY_FEATS = [
 
 
 COMMENT_OUT_FEATS = [
-"_100D"            # comment out the high dimensional features when trying to drop not important features
-"_26D"
+#"_100D"            # comment out the high dimensional features when trying to drop not important features
+#"_26D"
 #-------------- Turing Test --------------
 # d = {
 #     "df_basic_features.csv": "Basic",

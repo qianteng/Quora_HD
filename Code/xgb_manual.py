@@ -11,7 +11,7 @@ matplotlib.use('Agg')
 import config
 from utils import pkl_utils
 
-feature_name = "basic_nonlinear_20170525"
+feature_name = "basic_nonlinear_all_noHighDim"
 fname = os.path.join(config.FEAT_DIR+"/Combine", feature_name+config.FEAT_FILE_SUFFIX)
 data_dict = pkl_utils._load(fname)
 X_train = data_dict["X_train_basic"]
@@ -33,7 +33,7 @@ params = {'base_score': 0.369197, 'booster': 'gbtree', 'colsample_bylevel': 0.4,
           'gamma': 0.08759523291635393, 'eta': 0.072, 'max_depth': 6, 'min_child_weight': 1.6010959785458306e-10,
           'eval_metric': 'logloss', 'objective': 'binary:logistic', 'alpha': 9.817830899287001,
           'lambda': 0.7386562144326775, 'seed': 2017, 'subsample': 0.85, 'silent': 1}
-num_round = 50
+num_round = 500
 d_train = xgb.DMatrix(X_train_cv, label=y_train_cv, feature_names = data_dict["feature_names"])
 d_valid = xgb.DMatrix(X_valid_cv, label=y_valid_cv, feature_names = data_dict["feature_names"])
 watchlist = [(d_train, 'train_cv'), (d_valid, 'valid_cv')]

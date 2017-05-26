@@ -16,13 +16,13 @@ else:
     suffix = time_utils._timestamp_pretty()
     threshold = 0.05
 
-suffix = 'dropsome'
+suffix = 'all_noHighDim'
 threshold = 0.05
-cmd = "python get_feature_conf_nonlinear.py -d 10 -o feature_conf_nonlinear_%s.py"%suffix
+cmd = "python get_feature_conf_nonlinear.py -d 0 -o feature_conf_nonlinear_%s.py"%suffix
 os.system(cmd)
 
 cmd = "python feature_combiner.py -l 1 -c feature_conf_nonlinear_%s -n basic_nonlinear_%s -t %.6f"%(suffix, suffix, threshold)
 os.system(cmd)
 
-#cmd = "python task.py -m single -f basic_nonlinear_%s -l clf_xgb_tree -e 1 -p True"%suffix
-#os.system(cmd)
+cmd = "python task.py -m single -f basic_nonlinear_%s -l clf_xgb_tree_single -e 1 -p True"%suffix
+os.system(cmd)
