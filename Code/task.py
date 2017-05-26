@@ -16,7 +16,7 @@ from optparse import OptionParser
 
 import numpy as np
 import pandas as pd
-from sklearn.linear_model import Lasso, Ridge, BayesianRidge, RidgeClassifier
+from sklearn.linear_model import Lasso, Ridge, BayesianRidge
 from sklearn.ensemble import ExtraTreesRegressor, RandomForestRegressor, GradientBoostingRegressor
 from sklearn.metrics import log_loss
 from hyperopt import fmin, tpe, hp, STATUS_OK, Trials, space_eval
@@ -48,9 +48,6 @@ class Learner:
             return XGBRegressor(**self.param_dict)
         if self.learner_name in ["clf_xgb_linear", "clf_xgb_tree", "clf_xgb_tree_single"]:
             return XGBClassifier(**self.param_dict)
-        # sklearn classifier
-        if self.learner_name == "clf_skl_ridge":
-            return RidgeClassifier(**self.param_dict)
         # sklearn
         if self.learner_name == "reg_skl_lasso":
             return Lasso(**self.param_dict)
