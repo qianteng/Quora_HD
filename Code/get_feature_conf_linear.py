@@ -41,13 +41,11 @@ NOT_COUNT_FEATS = ["Norm", "Ratio"]
 
 MANDATORY_FEATS = [
 
-# including product_uid according to
-# https://www.kaggle.com/c/home-depot-product-search-relevance/forums/t/20288/trends-in-relevances-by-row-ids/115886#post115886
 ]
 
 
 COMMENT_OUT_FEATS = [
-
+"."
 #-------------- General --------------
 #"Bigram",
 #"Trigram",
@@ -109,8 +107,8 @@ COMMENT_OUT_FEATS = [
 #"StatCooc(TF|NormTF|TFIDF|NormTFIDF|BM25)_Bigram_(Std|Max|Min|Median)_search_term_product_name_x_product_title_product_name_1D",
 #"StatCooc(TF|NormTF|TFIDF|NormTFIDF|BM25)_Bigram_(Std|Max|Min|Median)_product_title_product_name_x_search_term_product_name_1D",
 
-"NormTF",
-"NormTFIDF",
+#"NormTF",
+#"NormTFIDF",
 
 
 #-------------- Vector Space --------------

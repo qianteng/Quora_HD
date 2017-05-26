@@ -119,6 +119,13 @@ param_space_clf_xgb_tree_single = {
     "nthread": xgb_nthread,
     "seed": xgb_random_seed,
 }
+# -------------------------------------- Sklearn Classifier---------------------------------------------
+param_space_clf_skl_ridge = {
+    "alpha": hp.loguniform("alpha", np.log(0.00001), np.log(0.1)),
+    "normalize": hp.choice("normalize", [True, False]),
+    "random_state": skl_random_seed
+}
+
 # -------------------------------------- Sklearn ---------------------------------------------
 ## lasso
 param_space_reg_skl_lasso = {
