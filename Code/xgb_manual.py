@@ -13,17 +13,17 @@ from utils import pkl_utils
 
 combine_flag = True
 if combine_flag:
-    suffix = 'magic'
+    suffix = 'v0'
     threshold = 0.0
     cmd = "python get_feature_conf_magic.py -d 0 -o feature_conf_magic_%s.py"%suffix
     os.system(cmd)
     cmd = "python feature_combiner.py -l 1 -c feature_conf_magic_%s -n basic_magic_%s -t %.6f"%(suffix, suffix, threshold)
     os.system(cmd)
     
-"""
-feature_name = "basic_magic"
+feature_name = "basic_magic_v0"
 fname = os.path.join(config.FEAT_DIR+"/Combine", feature_name+config.FEAT_FILE_SUFFIX)
 data_dict = pkl_utils._load(fname)
+"""
 X_train = data_dict["X_train_basic"]
 X_test = data_dict["X_test"]
 y_train = data_dict["y_train"]
