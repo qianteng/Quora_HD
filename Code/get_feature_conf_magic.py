@@ -35,8 +35,8 @@ NOT_COUNT_FEATS = ["Norm", "Ratio"]
 
 
 MANDATORY_FEATS = [
-    "LSA_magic_xgb_44D.pkl"         # pretend that the magic features are LSA
-    "LSA100_Word_Bigram_CosineSim_question1_x_question2_1D.pkl"
+    "LSA_magic_xgb_44D"         # pretend that the magic features are LSA
+    "LSA100_Word_Bigram_CosineSim_question1_x_question2_1D"
 ]
 
 COMMENT_OUT_FEATS = [
