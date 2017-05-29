@@ -29,7 +29,8 @@ FEAT_DIR = "%s/Feat"%ROOT_DIR
 FEAT_FILE_SUFFIX = ".pkl"
 FEAT_CONF_DIR = "./conf"
 FEAT_COMM_NONLINEAR_DIR = "./comm_nonlinear"         # comment out features
-FEAT_COMM_LINEAR_DIR = "./comm_linear" 
+FEAT_COMM_LINEAR_DIR = "./comm_linear"
+FEAT_SELECT_DIR = "./select" 
 
 OUTPUT_DIR = "%s/Output"%ROOT_DIR
 SUBM_DIR = "%s/Subm"%OUTPUT_DIR

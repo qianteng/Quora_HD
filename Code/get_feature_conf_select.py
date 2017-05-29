@@ -35,9 +35,11 @@ NOT_COUNT_FEATS = ["Norm", "Ratio"]
 
 
 MANDATORY_FEATS = [
-    "UniqueRatio_"
 ]
-
+for file in sorted(os.listdir(config.FEAT_SELECT_DIR)):  # comment out the last 0.1 of features in the files
+    feature_list = pd.read_table(config.FEAT_SELECT_DIR + '/' + file, header = None).values.flatten().tolist()
+    feature_list = [filename.split(".")[0] for filename in feature_list]
+    MANDATORY_FEATS = MANDATORY_FEATS + feature_list
 
 COMMENT_OUT_FEATS = [
 ".+"
