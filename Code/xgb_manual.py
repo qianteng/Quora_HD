@@ -11,7 +11,7 @@ matplotlib.use('Agg')
 import config
 from utils import pkl_utils
 
-combine_flag = False
+combine_flag = True
 if combine_flag:
     suffix = 'v0'
     threshold = 0.0
