@@ -12,15 +12,15 @@ matplotlib.use('Agg')
 import config
 from utils import pkl_utils
 
-
-
-suffix = 'extra'
-threshold = 0.05
-cmd = "python get_feature_conf_select.py -d 0 -o feature_conf_select_%s.py"%suffix
-os.system(cmd)
-
-cmd = "python feature_combiner.py -l 1 -c feature_conf_select_%s -n selected_%s -t %.6f"%(suffix, suffix, threshold)
-os.system(cmd)
+combine_flag = False
+if combine_flag:
+    suffix = 'extra'
+    threshold = 0.05
+    cmd = "python get_feature_conf_select.py -d 0 -o feature_conf_select_%s.py"%suffix
+    os.system(cmd)
+    
+    cmd = "python feature_combiner.py -l 1 -c feature_conf_select_%s -n selected_%s -t %.6f"%(suffix, suffix, threshold)
+    os.system(cmd)
 
 
 feature_name = "selected_%s"%suffix
@@ -42,4 +42,7 @@ learner = ExtraTreesClassifier(n_estimators=500, criterion='gini', max_depth=5,
                                n_jobs=-1, random_state=config.RANDOM_SEED, verbose=10)
 learner.fit(X_train_cv, y_train_cv)
 p_test = learner.predict_proba(X_valid_cv)
-print(log_loss(y_valid_cv, p_test))
+print("The log loss of valid set is {}".format(log_loss(y_valid_cv, p_test)))
+index = learner.feature_importances_.argsort()
+for i in range(-1, -len(index), -1):
+    print("{:30}  {:30}".format(data_dict['feature_names'][index[i]], learner.feature_importances_[index[i]]))
