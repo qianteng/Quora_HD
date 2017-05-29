@@ -59,8 +59,8 @@ params = {'objective': 'binary:logistic', 'eval_metric': 'logloss', 'eta': .02,
 #          'lambda': 0.7386562144326775, 'seed': 2017, 'subsample': 0.95, 'silent': 1}
 
 num_round = 2500
-d_train_cv = xgb.DMatrix(X_train_cv, label=y_train_cv, feature_names = data_dict["feature_names"])
-d_valid_cv = xgb.DMatrix(X_valid_cv, label=y_valid_cv, feature_names = data_dict["feature_names"])
+d_train_cv = xgb.DMatrix(X_train, label=y_train, feature_names = data_dict["feature_names"])
+d_valid_cv = xgb.DMatrix(X_valid, label=y_valid, feature_names = data_dict["feature_names"])
 watchlist = [(d_train_cv, 'train_cv'), (d_valid_cv, 'valid_cv')]
 bst = xgb.train(params, d_train_cv, num_round, watchlist, early_stopping_rounds=50, verbose_eval=50)
 
