@@ -7,7 +7,7 @@ from sklearn.metrics import log_loss
 import xgboost as xgb
 import matplotlib
 matplotlib.use('Agg')
-
+from sklearn.cross_validation import train_test_split
 import config
 from utils import pkl_utils
 
@@ -23,16 +23,34 @@ if combine_flag:
 feature_name = "basic_magic_v0"
 fname = os.path.join(config.FEAT_DIR+"/Combine", feature_name+config.FEAT_FILE_SUFFIX)
 data_dict = pkl_utils._load(fname)
-X_train = data_dict["X_train_basic"]
-X_test = data_dict["X_test"]
+X_train = pd.DataFrame(data_dict["X_train_basic"], columns = data_dict["feature_names"])
+X_test = pd.DataFrame(data_dict["X_test"], columns = data_dict["feature_names"])
 y_train = data_dict["y_train"]
-splitter = data_dict["splitter"]
-n_iter = data_dict["n_iter"]
-i = n_iter - 1             # use the last splitter to split the cv
-X_train_cv = data_dict["X_train_basic"][splitter[i][0], :]
-X_valid_cv = data_dict["X_train_basic"][splitter[i][1], :]
-y_train_cv = data_dict["y_train"][splitter[i][0]]
-y_valid_cv = data_dict["y_train"][splitter[i][1]]
+
+
+X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_train, test_size=0.1, random_state=4242)
+#UPDownSampling
+pos_train = X_train[y_train == 1]
+neg_train = X_train[y_train == 0]
+X_train = pd.concat((neg_train, pos_train.iloc[:int(0.8*len(pos_train))], neg_train))
+y_train = np.array([0] * neg_train.shape[0] + [1] * pos_train.iloc[:int(0.8*len(pos_train))].shape[0] + [0] * neg_train.shape[0])
+print(np.mean(y_train))
+del pos_train, neg_train
+
+pos_valid = X_valid[y_valid == 1]
+neg_valid = X_valid[y_valid == 0]
+X_valid = pd.concat((neg_valid, pos_valid.iloc[:int(0.8 * len(pos_valid))], neg_valid))
+y_valid = np.array([0] * neg_valid.shape[0] + [1] * pos_valid.iloc[:int(0.8 * len(pos_valid))].shape[0] + [0] * neg_valid.shape[0])
+print(np.mean(y_valid))
+del pos_valid, neg_valid
+
+#splitter = data_dict["splitter"]
+#n_iter = data_dict["n_iter"]
+#i = n_iter - 1             # use the last splitter to split the cv
+#X_train_cv = data_dict["X_train_basic"][splitter[i][0], :]
+#X_valid_cv = data_dict["X_train_basic"][splitter[i][1], :]
+#y_train_cv = data_dict["y_train"][splitter[i][0]]
+#y_valid_cv = data_dict["y_train"][splitter[i][1]]
 params = {'objective': 'binary:logistic', 'eval_metric': 'logloss', 'eta': .02,
           'max_depth': 7,'subsample': 0.6, 'base_score': 0.2, 'silent': True}
 #params = {'base_score': 0.369197, 'booster': 'gbtree', 'colsample_bylevel': 0.4, 'colsample_bytree': 1,
@@ -44,11 +62,10 @@ num_round = 2500
 d_train_cv = xgb.DMatrix(X_train_cv, label=y_train_cv, feature_names = data_dict["feature_names"])
 d_valid_cv = xgb.DMatrix(X_valid_cv, label=y_valid_cv, feature_names = data_dict["feature_names"])
 watchlist = [(d_train_cv, 'train_cv'), (d_valid_cv, 'valid_cv')]
-bst = xgb.train(params, d_train_cv, num_round, watchlist, early_stopping_rounds=50, verbose_eval=10)
+bst = xgb.train(params, d_train_cv, num_round, watchlist, early_stopping_rounds=50, verbose_eval=50)
 
-d_train = xgb.DMatrix(X_train, label=y_train, feature_names = data_dict["feature_names"])
+d_train = xgb.DMatrix(pd.concat((X_train, X_valid), axis=0), label=y_train, feature_names = data_dict["feature_names"])
 d_test = xgb.DMatrix(X_test, feature_names = data_dict["feature_names"])
-watchlist = [(d_valid_cv, 'valid_cv')]
 bst_refit = xgb.train(params, d_train, int(bst.attr('best_iteration')), verbose_eval=50)
 p_test = bst_refit.predict(d_test)
 sub = pd.DataFrame()
