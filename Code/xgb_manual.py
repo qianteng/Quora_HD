@@ -14,7 +14,7 @@ from utils import pkl_utils
 combine_flag = True
 if combine_flag:
     suffix = 'v0'
-    threshold = 0.0
+    threshold = 0.05
     cmd = "python get_feature_conf_magic.py -d 44 -o feature_conf_magic_%s.py"%suffix
     os.system(cmd)
     cmd = "python feature_combiner.py -l 1 -c feature_conf_magic_%s -n basic_magic_%s -t %.6f"%(suffix, suffix, threshold)
@@ -64,7 +64,7 @@ d_valid_cv = xgb.DMatrix(X_valid, label=y_valid, feature_names = data_dict["feat
 watchlist = [(d_train_cv, 'train_cv'), (d_valid_cv, 'valid_cv')]
 bst = xgb.train(params, d_train_cv, num_round, watchlist, early_stopping_rounds=50, verbose_eval=50)
 
-d_train = xgb.DMatrix(pd.concat((X_train, X_valid), axis=0), label=y_train, feature_names = data_dict["feature_names"])
+d_train = xgb.DMatrix(pd.concat((X_train, X_valid), axis=0), label=np.concatenate((y_train, y_valid)), feature_names = data_dict["feature_names"])
 d_test = xgb.DMatrix(X_test, feature_names = data_dict["feature_names"])
 bst_refit = xgb.train(params, d_train, int(bst.attr('best_iteration')), verbose_eval=50)
 p_test = bst_refit.predict(d_test)
