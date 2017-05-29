@@ -37,7 +37,7 @@ X_valid_cv = data_dict["X_train_basic"][splitter[i][1], :]
 y_train_cv = data_dict["y_train"][splitter[i][0]]
 y_valid_cv = data_dict["y_train"][splitter[i][1]]
 
-learner = ExtraTreesClassifier(n_estimators=50, criterion='gini', max_depth=5,
+learner = ExtraTreesClassifier(n_estimators=500, criterion='gini', max_depth=5,
                                min_weight_fraction_leaf=0.0, max_features='auto',
                                n_jobs=-1, random_state=config.RANDOM_SEED, verbose=10)
 learner.fit(X_train_cv, y_train_cv)
