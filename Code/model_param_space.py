@@ -14,8 +14,8 @@ import config
 ## xgboost
 xgb_random_seed = config.RANDOM_SEED
 xgb_nthread = config.NUM_CORES
-xgb_n_estimators_min = 100
-xgb_n_estimators_max = 1000
+xgb_n_estimators_min = 1000
+xgb_n_estimators_max = 2000
 xgb_n_estimators_step = 10
 
 ## sklearn
