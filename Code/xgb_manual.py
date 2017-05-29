@@ -11,7 +11,17 @@ matplotlib.use('Agg')
 import config
 from utils import pkl_utils
 
-feature_name = "basic_nonlinear_all"
+combine_flag = True
+if combine_flag:
+    suffix = 'magic'
+    threshold = 0.0
+    cmd = "python get_feature_conf_magic.py -d 0 -o feature_conf_magic_%s.py"%suffix
+    os.system(cmd)
+    cmd = "python feature_combiner.py -l 1 -c feature_conf_magic_%s -n basic_magic_%s -t %.6f"%(suffix, suffix, threshold)
+    os.system(cmd)
+    
+"""
+feature_name = "basic_magic"
 fname = os.path.join(config.FEAT_DIR+"/Combine", feature_name+config.FEAT_FILE_SUFFIX)
 data_dict = pkl_utils._load(fname)
 X_train = data_dict["X_train_basic"]
@@ -62,4 +72,4 @@ fname = "XGBClassifier_topn_features_manual.txt"
 with open(fname, "w") as f:
     for i in range(topn):
         f.write("%s\n"%yticklabels[i].get_text())
-
+"""
