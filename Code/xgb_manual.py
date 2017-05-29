@@ -11,7 +11,7 @@ matplotlib.use('Agg')
 import config
 from utils import pkl_utils
 
-combine_flag = True
+combine_flag = False
 if combine_flag:
     suffix = 'v0'
     threshold = 0.0
@@ -23,7 +23,6 @@ if combine_flag:
 feature_name = "basic_magic_v0"
 fname = os.path.join(config.FEAT_DIR+"/Combine", feature_name+config.FEAT_FILE_SUFFIX)
 data_dict = pkl_utils._load(fname)
-"""
 X_train = data_dict["X_train_basic"]
 X_test = data_dict["X_test"]
 y_train = data_dict["y_train"]
@@ -70,4 +69,3 @@ fname = "XGBClassifier_topn_features_magic.txt"
 with open(fname, "w") as f:
     for i in range(topn):
         f.write("%s\n"%yticklabels[i].get_text())
-"""
