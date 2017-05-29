@@ -35,7 +35,7 @@ NOT_COUNT_FEATS = ["Norm", "Ratio"]
 
 
 MANDATORY_FEATS = [
-    "magic_xgb_44D.pkl"
+    "LSA_magic_xgb_44D.pkl"         # pretend that the magic features are LSA
 ]
 
 COMMENT_OUT_FEATS = [

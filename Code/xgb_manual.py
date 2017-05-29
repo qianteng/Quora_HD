@@ -15,7 +15,7 @@ combine_flag = True
 if combine_flag:
     suffix = 'v0'
     threshold = 0.0
-    cmd = "python get_feature_conf_magic.py -d 0 -o feature_conf_magic_%s.py"%suffix
+    cmd = "python get_feature_conf_magic.py -d 44 -o feature_conf_magic_%s.py"%suffix
     os.system(cmd)
     cmd = "python feature_combiner.py -l 1 -c feature_conf_magic_%s -n basic_magic_%s -t %.6f"%(suffix, suffix, threshold)
     os.system(cmd)
