@@ -11,7 +11,7 @@ from sklearn.cross_validation import train_test_split
 import config
 from utils import pkl_utils
 
-combine_flag = True
+combine_flag = False
 if combine_flag:
     suffix = 'v4'
     threshold = 0.05
