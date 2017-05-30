@@ -20,7 +20,7 @@ if combine_flag:
     cmd = "python feature_combiner.py -l 1 -c feature_conf_magic_%s -n basic_magic_%s -t %.6f"%(suffix, suffix, threshold)
     os.system(cmd)
     
-feature_name = "basic_magic_v0"
+feature_name = "basic_magic_{}".format(suffix)
 fname = os.path.join(config.FEAT_DIR+"/Combine", feature_name+config.FEAT_FILE_SUFFIX)
 data_dict = pkl_utils._load(fname)
 X_train = pd.DataFrame(data_dict["X_train_basic"], columns = data_dict["feature_names"])
@@ -75,7 +75,7 @@ try:
     sub['is_duplicate'] = p_test
 except:
     sub['is_duplicate'] = p_test[:,1]
-path = os.path.join(config.OUTPUT_DIR + '/Subm', 'xgb_magic_v0.csv')
+path = os.path.join(config.OUTPUT_DIR + '/Subm', 'xgb_magic_' + suffix + '.csv')
 sub.to_csv(path, index=False)
 
 ax = xgb.plot_importance(bst)
