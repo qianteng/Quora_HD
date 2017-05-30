@@ -13,9 +13,9 @@ from utils import pkl_utils
 
 combine_flag = True
 if combine_flag:
-    suffix = 'v0'
+    suffix = 'v4'
     threshold = 0.05
-    cmd = "python get_feature_conf_magic.py -d 44 -o feature_conf_magic_%s.py"%suffix
+    cmd = "python get_feature_conf_magic.py -l 5 -m 44 -o feature_conf_magic_%s.py"%suffix
     os.system(cmd)
     cmd = "python feature_combiner.py -l 1 -c feature_conf_magic_%s -n basic_magic_%s -t %.6f"%(suffix, suffix, threshold)
     os.system(cmd)
@@ -58,7 +58,7 @@ params = {'objective': 'binary:logistic', 'eval_metric': 'logloss', 'eta': .02,
 #          'num_class': 2, 'objective': 'multi:softprob', 'alpha': 9.817830899287001,
 #          'lambda': 0.7386562144326775, 'seed': 2017, 'subsample': 0.95, 'silent': 1}
 
-num_round = 5000
+num_round = 100000
 d_train_cv = xgb.DMatrix(X_train, label=y_train, feature_names = data_dict["feature_names"])
 d_valid_cv = xgb.DMatrix(X_valid, label=y_valid, feature_names = data_dict["feature_names"])
 watchlist = [(d_train_cv, 'train_cv'), (d_valid_cv, 'valid_cv')]
